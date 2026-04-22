@@ -71,7 +71,7 @@
 					<ul>
 						<li class="active"><a href="index.html">Главная</a></li>
 						<li class="active"><a href="#fh5co-event">События</a></li>
-						<li class="active"><a href="#fh5co-gallery">Галерея</a></li>
+						<li class="active"><a href="#fh5co-love-story">Наша история</a></li>
 						<li class="active"><a href="#fh5co-services">Детали</a></li>
 						<!-- <li class="active"><a href="#fh5co-services">Лучшие моменты</a></li> -->
 					</ul>
@@ -157,52 +157,77 @@
 	</div>
 
 
-	<div id="fh5co-gallery" class="fh5co-section-gray">
+	<section id="fh5co-love-story" class="fh5co-section-gray love-story" aria-labelledby="love-story-title">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading animate-box">
-					<h2 style="color: #000 !important;">Галерея</h2>
+					<h2 id="love-story-title" style="color: #000 !important;">Наша история</h2>
+					<p class="love-story__lead">Love Story</p>
 				</div>
 			</div>
 			<div class="row row-bottom-padded-md">
 				<div class="col-md-12">
-					<ul id="fh5co-gallery-list"> <!-- Для первого ряда фоток-->
-						
-					<li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url(images/F1.jpg); background-size: contain;"> 
-						<a href="images/F1.jpg">
-							<div class="case-studies-summary">
-							</div>
-						</a>
-					</li>
+					<div class="love-story__wrap">
+						<div class="love-story__grid love-story__grid--child">
+							<figure class="love-story__card love-story__card--him animate-box" data-animate-effect="fadeIn">
+								<a class="love-story__link image-popup" href="images/F1.jpg">
+									<span class="love-story__frame">
+										<img class="love-story__img" src="images/F1.jpg" width="400" height="300" alt="Дмитрий в детстве" loading="lazy" />
+									</span>
+								</a>
+								<figcaption class="love-story__caption">Он</figcaption>
+							</figure>
 
-					<li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url(images/F2.jpg); "> 
-						<a href="images/F2.jpg">
-							<div class="case-studies-summary">
-							</div>
-						</a>
-					</li>
-					<li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url(images/F3.jpg); "> 
-						<a href="images/F3.jpg">
-							<div class="case-studies-summary">
-							</div>
-						</a>
-					</li>
-					
-					</ul>
-					
-					<ul id="fh5co-gallery-list"> <!-- Для второго ряда фоток-->
-						<li class="one-third animate-box" style="background-image: url(images/F4.jpg); margin-left: 18%;">
-							<a href="images/F4.jpg"><div class="case-studies-summary"></div></a>
-						</li>
-						<li class="one-third animate-box" style="background-image: url(images/F5.jpg);">
-							<a href="images/F5.jpg"><div class="case-studies-summary"></div></a>
-						</li>
-					</ul>
+							<figure class="love-story__card love-story__card--us love-story__card--featured animate-box" data-animate-effect="fadeIn">
+								<a class="love-story__link love-story__link--accent image-popup" href="images/F2.jpg">
+									<span class="love-story__frame">
+										<img class="love-story__img" src="images/F2.jpg" width="400" height="300" alt="Первое совместное детское фото" loading="lazy" />
+									</span>
+								</a>
+								<figcaption class="love-story__caption">Мы</figcaption>
+							</figure>
 
+							<figure class="love-story__card love-story__card--her animate-box" data-animate-effect="fadeIn">
+								<a class="love-story__link image-popup" href="images/F3.jpg">
+									<span class="love-story__frame">
+										<img class="love-story__img" src="images/F3.jpg" width="400" height="300" alt="Арина в детстве" loading="lazy" />
+									</span>
+								</a>
+								<figcaption class="love-story__caption">Она</figcaption>
+							</figure>
+						</div>
+
+						<div class="love-story__connector" aria-hidden="true">
+							<svg class="love-story__connector-svg" viewBox="0 0 400 72" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+								<path class="love-story__connector-line" d="M28 8v16c0 7 5.5 12.5 12.5 12.5H170" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" />
+								<path class="love-story__connector-line" d="M372 8v16c0 7-5.5 12.5-12.5 12.5H230" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" />
+								<path class="love-story__connector-line" d="M200 36.5V54" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" />
+								<path class="love-story__heart" fill="currentColor" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" transform="translate(188 40) scale(0.7)" />
+							</svg>
+						</div>
+
+						<div class="love-story__grid love-story__grid--now">
+							<figure class="love-story__card love-story__card--now-1 animate-box" data-animate-effect="fadeIn">
+								<a class="love-story__link image-popup" href="images/F4.jpg">
+									<span class="love-story__frame">
+										<img class="love-story__img" src="images/F4.jpg" width="600" height="300" alt="Современное фото пары" loading="lazy" />
+									</span>
+								</a>
+							</figure>
+
+							<figure class="love-story__card love-story__card--now-2 animate-box" data-animate-effect="fadeIn">
+								<a class="love-story__link image-popup" href="images/F5.jpg">
+									<span class="love-story__frame">
+										<img class="love-story__img" src="images/F5.jpg" width="600" height="300" alt="Современное фото пары" loading="lazy" />
+									</span>
+								</a>
+							</figure>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+	</section>
 
 	<div id="fh5co-services" class="fh5co-section-gray">
 		<div class="container">

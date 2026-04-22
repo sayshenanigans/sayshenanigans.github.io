@@ -744,6 +744,158 @@ h1, h2, h3, h4, h5, h6, figure {
   }
 }
 
+/* ——— Love Story (Наша история) ———
+   Две сетки: 3×1 (детство) и 2×1 (сейчас), Bootstrap — только .container / .row / .col. */
+#fh5co-love-story .love-story__wrap {
+  max-width: 1100px;
+  width: 100%;
+  min-width: 0;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 20px;
+  box-sizing: border-box;
+}
+
+#fh5co-love-story .love-story__grid--child,
+#fh5co-love-story .love-story__grid--now {
+  display: grid;
+  gap: 20px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  align-self: stretch;
+  box-sizing: border-box;
+}
+
+#fh5co-love-story .love-story__grid--child {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+#fh5co-love-story .love-story__grid--now {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.love-story__lead {
+  margin: 0.25em 0 0;
+  font-family: "Engagement", "Sacramento", cursive;
+  font-size: 1.75rem;
+  color: #8a7a6a;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+}
+
+figure.love-story__card {
+  margin: 0;
+  min-width: 0;
+  max-width: 100%;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+#fh5co-love-story a.love-story__link {
+  display: block;
+  text-decoration: none;
+  color: #646464;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1), 0 2px 8px rgba(0, 0, 0, 0.05);
+  -webkit-transition: box-shadow 0.35s ease, transform 0.35s ease, color 0.5s;
+  -o-transition: box-shadow 0.35s ease, transform 0.35s ease, color 0.5s;
+  transition: box-shadow 0.35s ease, transform 0.35s ease, color 0.5s;
+}
+
+#fh5co-love-story a.love-story__link:hover,
+#fh5co-love-story a.love-story__link:focus,
+#fh5co-love-story a.love-story__link:active {
+  text-decoration: none;
+  color: #646464;
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.14), 0 4px 12px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+  outline: none;
+}
+
+#fh5co-love-story a.love-story__link--accent:hover,
+#fh5co-love-story a.love-story__link--accent:focus,
+#fh5co-love-story a.love-story__link--accent:active {
+  -webkit-box-shadow: 0 0 0 1px rgba(201, 162, 55, 0.7), 0 10px 32px rgba(0, 0, 0, 0.14), 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 0 0 1px rgba(201, 162, 55, 0.7), 0 10px 32px rgba(0, 0, 0, 0.14), 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+#fh5co-love-story .love-story__frame {
+  display: block;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #f0ebe4;
+  height: 300px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+#fh5co-love-story .love-story__img {
+  display: block;
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  border-radius: 8px;
+}
+
+/* Первый ряд: в обрезке — верх кадра (лица/головы), а не центр. */
+#fh5co-love-story .love-story__grid--child .love-story__img {
+  -o-object-position: center top;
+  object-position: center top;
+}
+
+#fh5co-love-story a.love-story__link--accent {
+  -webkit-box-shadow: 0 0 0 1px rgba(201, 162, 55, 0.65), 0 6px 24px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 0 1px rgba(201, 162, 55, 0.65), 0 6px 24px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+#fh5co-love-story .love-story__caption {
+  margin: 0.75rem 0 0;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 1.05rem;
+  font-style: italic;
+  color: #4a4a4a;
+  letter-spacing: 0.12em;
+}
+
+#fh5co-love-story .love-story__connector {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem 0 0.25rem;
+  min-height: 56px;
+  color: #c4a24a;
+  opacity: 0.9;
+  flex: 0 0 auto;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  align-self: stretch;
+}
+
+#fh5co-love-story .love-story__connector-svg {
+  width: min(100%, 420px);
+  height: auto;
+  max-width: 100%;
+  display: block;
+}
+
+@media screen and (max-width: 767px) {
+  #fh5co-love-story .love-story__grid--child,
+  #fh5co-love-story .love-story__grid--now {
+    grid-template-columns: 1fr;
+  }
+}
+
 #map {
   width: 100%;
   height: 500px;
@@ -957,6 +1109,7 @@ form label {
 #fh5co-event,
 #fh5co-couple-story,
 #fh5co-couple,
+#fh5co-love-story,
 #fh5co-gallery,
 .fh5co-section {
   padding: 7em 0;
@@ -970,6 +1123,7 @@ form label {
   #fh5co-event,
   #fh5co-couple-story,
   #fh5co-couple,
+  #fh5co-love-story,
   #fh5co-gallery,
   .fh5co-section {
     padding: 3em 0;
