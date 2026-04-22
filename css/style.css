@@ -357,8 +357,16 @@ h1, h2, h3, h4, h5, h6, figure {
 
 #fh5co-counter,
 #fh5co-event {
-  height: 850px;
   float: left;
+  width: 100%;
+}
+#fh5co-counter {
+  height: 850px;
+}
+#fh5co-event {
+  height: auto;
+  min-height: 0;
+  padding-bottom: 5em;
 }
 #fh5co-counter .display-t,
 #fh5co-counter .display-tc,
@@ -449,6 +457,129 @@ h1, h2, h3, h4, h5, h6, figure {
   width: 50%;
   float: left;
   margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* ——— Секция «События»: фото на всю ширину экрана, карточки в разных углах ——— */
+#fh5co-event.fh5co-section-events .container {
+  margin-bottom: 0;
+  padding-bottom: 0.5em;
+}
+#fh5co-event .event-band {
+  width: 100%;
+  max-width: 100%;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  min-height: clamp(360px, 50vh, 700px);
+  position: relative;
+  background-color: #5a5a5a;
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  background-size: cover;
+  background-position: center center;
+}
+#fh5co-event .event-band--ceremony {
+  margin-top: 1.25em;
+  background-image: url("../images/Z1.jpg");
+}
+#fh5co-event .event-band--banquet {
+  background-image: url("../images/Z2.jpg");
+  margin-top: 0;
+}
+#fh5co-event .event-band__inner {
+  max-width: 1140px;
+  width: 100%;
+  min-height: clamp(360px, 50vh, 700px);
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  padding: clamp(1rem, 3vw, 1.75rem) 15px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+#fh5co-event .event-band__inner--end {
+  -webkit-box-align: end;
+  -ms-flex-align: end;
+  align-items: flex-end;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+#fh5co-event .event-timeline__card--ceremony,
+#fh5co-event .event-timeline__card--banquet {
+  width: 100%;
+  max-width: 440px;
+  min-height: 0;
+  float: none;
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  padding: 0.85rem;
+  border: none;
+  background: transparent;
+  -webkit-box-shadow: 0 6px 32px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 32px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(0, 0, 0, 0.1);
+  -webkit-border-radius: 14px;
+  border-radius: 14px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  display: block;
+  overflow: hidden;
+}
+#fh5co-event .event-timeline__card-surface {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 1.25rem 1.1rem 1.35rem;
+  background: rgba(255, 255, 255, 0.9);
+  -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.04);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.04);
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+#fh5co-event .event-timeline__map {
+  max-width: 100%;
+  border-radius: 8px;
+  margin: 0 auto;
+}
+@media screen and (max-width: 768px) {
+  #fh5co-event .event-band__inner,
+  #fh5co-event .event-band__inner--end {
+    min-height: auto;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+  }
+  #fh5co-event .event-band--ceremony {
+    margin-top: 0.5em;
+  }
+  #fh5co-event .event-band--banquet .event-band__inner--end {
+    -webkit-box-align: end;
+    -ms-flex-align: end;
+    align-items: flex-end;
+  }
+  #fh5co-event .event-timeline__card--ceremony {
+    margin: 0 auto 1.25em;
+  }
+  #fh5co-event .event-timeline__card--banquet {
+    margin: 0 auto;
+  }
 }
 
 #fh5co-counter {
