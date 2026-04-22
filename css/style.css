@@ -501,9 +501,9 @@ h1, h2, h3, h4, h5, h6, figure {
   -webkit-box-align: start;
   -ms-flex-align: start;
   align-items: flex-start;
-  -webkit-box-pack: start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
   padding: clamp(1rem, 3vw, 1.75rem) 15px;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -512,9 +512,9 @@ h1, h2, h3, h4, h5, h6, figure {
   -webkit-box-align: end;
   -ms-flex-align: end;
   align-items: flex-end;
-  -webkit-box-pack: end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
 }
 #fh5co-event .event-timeline__card--ceremony,
 #fh5co-event .event-timeline__card--banquet {
