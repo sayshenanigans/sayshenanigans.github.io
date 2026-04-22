@@ -88,10 +88,10 @@
 				<div class="col-md-8 col-md-offset-2 text-center">
 					<div class="display-t">
 						<div class="display-tc animate-box" data-animate-effect="fadeIn">
-							<h1>Дмитрий &amp; Арина</h1>
+							<h1 style="font-weight: 700; font-style: italic;">Дмитрий &amp; Арина</h1>
 							<br>
 							<img src="images/fprint.png" alt="Dmitry + Arina"> 
-							<h2>29.08.2026</h2>
+							<h2 style="font-weight: 700; font-style: italic;">29.08.2026</h2>
 							<div class="flipTimebox">
 								<div class="clock clock-fix"></div>
 							</div>
@@ -199,10 +199,21 @@
 
 						<div class="love-story__connector" aria-hidden="true">
 							<svg class="love-story__connector-svg" viewBox="0 0 400 72" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+								<style>
+									.love-story__heart {
+										animation: pulse 1.2s ease-in-out infinite;
+										transform-origin: center;
+										transform-box: fill-box;
+									}
+									@keyframes pulse {
+										0%, 100% { transform: translate(188px, 48px) scale(1); }
+										50% { transform: translate(188px, 48px) scale(1.15); }
+									}
+								</style>
 								<path class="love-story__connector-line" d="M28 8v16c0 7 5.5 12.5 12.5 12.5H170" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" />
 								<path class="love-story__connector-line" d="M372 8v16c0 7-5.5 12.5-12.5 12.5H230" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" />
-								<path class="love-story__connector-line" d="M200 36.5V54" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" />
-								<path class="love-story__heart" fill="currentColor" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" transform="translate(188 40) scale(0.7)" />
+								<path class="love-story__connector-line" d="M200 36.5V56" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" />
+								<path class="love-story__heart" fill="currentColor" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" transform="translate(188 48) scale(1.0)" />
 							</svg>
 						</div>
 
