@@ -569,29 +569,31 @@ h1, h2, h3, h4, h5, h6, figure {
   margin: 0 auto;
 }
 @media screen and (max-width: 768px) {
-  #fh5co-event .event-band__inner,
-  #fh5co-event .event-band__inner--end {
-    min-height: auto;
+  /* События: на мобильных тот же вид, что и на ПК (полосы с фото, карточки в углах) */
+  #fh5co-event.fh5co-section-events .event-band__inner {
+    min-height: clamp(360px, 50vh, 700px);
     -webkit-box-align: start;
     -ms-flex-align: start;
     align-items: flex-start;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
   }
-  #fh5co-event .event-band--ceremony {
-    margin-top: 0.5em;
-  }
-  #fh5co-event .event-band--banquet .event-band__inner--end {
+  #fh5co-event.fh5co-section-events .event-band__inner--end {
+    min-height: clamp(360px, 50vh, 700px);
     -webkit-box-align: end;
     -ms-flex-align: end;
     align-items: flex-end;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
   }
-  #fh5co-event .event-timeline__card--ceremony {
-    margin: 0 auto 1.25em;
+  #fh5co-event.fh5co-section-events .event-band--ceremony {
+    margin-top: 1.25em;
   }
-  #fh5co-event .event-timeline__card--banquet {
-    margin: 0 auto;
+  #fh5co-event.fh5co-section-events .event-timeline__card--ceremony,
+  #fh5co-event.fh5co-section-events .event-timeline__card--banquet {
+    margin: 0;
   }
 }
 
@@ -1282,6 +1284,55 @@ form label {
   box-shadow: 0px 14px 30px -15px rgba(0, 0, 0, 0.75) !important;
 }
 
+@-webkit-keyframes rsvp-btn-pulse {
+  0%,
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-box-shadow: 0 3px 14px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 3px 14px rgba(0, 0, 0, 0.12);
+  }
+  50% {
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
+    -webkit-box-shadow: 0 6px 22px rgba(0, 0, 0, 0.18), 0 0 0 8px rgba(255, 255, 255, 0.2);
+    box-shadow: 0 6px 22px rgba(0, 0, 0, 0.18), 0 0 0 8px rgba(255, 255, 255, 0.2);
+  }
+}
+@keyframes rsvp-btn-pulse {
+  0%,
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-box-shadow: 0 3px 14px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 3px 14px rgba(0, 0, 0, 0.12);
+  }
+  50% {
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
+    -webkit-box-shadow: 0 6px 22px rgba(0, 0, 0, 0.18), 0 0 0 8px rgba(255, 255, 255, 0.2);
+    box-shadow: 0 6px 22px rgba(0, 0, 0, 0.18), 0 0 0 8px rgba(255, 255, 255, 0.2);
+  }
+}
+#fh5co-header .display-tc .btn.btn-rsvp {
+  display: inline-block;
+  -webkit-animation: rsvp-btn-pulse 2s ease-in-out infinite;
+  animation: rsvp-btn-pulse 2s ease-in-out infinite;
+}
+#fh5co-header .display-tc .btn.btn-rsvp:hover,
+#fh5co-header .display-tc .btn.btn-rsvp:focus-visible {
+  -webkit-animation: none;
+  animation: none;
+  -webkit-transform: none;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  #fh5co-header .display-tc .btn.btn-rsvp {
+    -webkit-animation: none;
+    animation: none;
+  }
+}
+
 #fh5co-counter {
   text-align: center;
 }
@@ -1349,7 +1400,6 @@ form label {
   #fh5co-services,
   #fh5co-started,
   #fh5co-footer,
-  #fh5co-event,
   #fh5co-couple-story,
   #fh5co-couple,
   #fh5co-love-story,
