@@ -325,7 +325,7 @@ h1, h2, h3, h4, h5, h6, figure {
 }
 
 #fh5co-header.fh5co-cover {
-  background: rgba(155, 45, 48, 1);
+  background: rgb(128, 39, 39, 1);
 }
 
 #fh5co-header.fh5co-cover .overlay {
@@ -1057,10 +1057,9 @@ figure.love-story__card {
 
 #fh5co-love-story .love-story__caption {
   margin: 0.75rem 0 0;
-  font-family: Georgia, "Times New Roman", Times, serif;
-  font-size: 1.05rem;
-  font-style: italic;
-  color: #4a4a4a;
+  font-family: "Cormorant SC", Georgia, "Times New Roman", Times, serif;
+  font-size: 20px;
+  color: #fff;
   letter-spacing: 0.12em;
 }
 
@@ -1094,8 +1093,8 @@ figure.love-story__card {
   #fh5co-love-story .love-story__group-label {
     display: block;
     margin-bottom: 0.5rem;
-    font-size: 0.75rem;
-    color: #6a5d52;
+    font-size: 15px;
+    color: #fff;
   }
   #fh5co-love-story .love-story__group--child {
     padding: 12px 10px 14px;
@@ -1440,7 +1439,7 @@ form label {
 }
 
 .fh5co-section-gray {
-  background: rgba(155, 45, 48, 1);
+  background: rgb(128, 39, 39, 1);
 }
 
 .couple-wrap {
