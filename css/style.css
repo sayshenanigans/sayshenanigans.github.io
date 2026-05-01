@@ -5,7 +5,7 @@
   font-weight: normal;
   font-style: normal;
 }
-@font-face { font-family: Amsterdam; src: url('../fonts/Caveat.ttf'); } 
+@font-face { font-family: Amsterdam; src: url('../fonts/Marianna.ttf'); } 
 /* =======================================================
 *
 * 	Template Style 
@@ -322,6 +322,14 @@ h1, h2, h3, h4, h5, h6, figure {
     height: 100vh;
   }
 }
+
+#fh5co-header.fh5co-cover {
+  background: rgba(155, 45, 48, 1);
+}
+
+#fh5co-header.fh5co-cover .overlay {
+  display: none;
+}
 .fh5co-cover .display-t,
 .fh5co-cover .display-tc {
   height: 900px;
@@ -464,7 +472,7 @@ h1, h2, h3, h4, h5, h6, figure {
   text-align: center;
 }
 
-/* ——— Секция «События»: фото на всю ширину экрана, карточки в разных углах ——— */
+/* ——— Секция «События»: фото по ширине контента (как .container), карточки в углах ——— */
 #fh5co-event.fh5co-section-events .container {
   margin-bottom: 0;
   padding-bottom: 0.5em;
@@ -476,18 +484,12 @@ h1, h2, h3, h4, h5, h6, figure {
   box-sizing: border-box;
   min-height: clamp(360px, 50vh, 700px);
   position: relative;
-  background-color: #5a5a5a;
-  background-repeat: no-repeat;
-  -webkit-background-size: cover;
-  background-size: cover;
-  background-position: center center;
+  background: transparent;
 }
 #fh5co-event .event-band--ceremony {
   margin-top: 1.25em;
-  background-image: url("../images/Z1.jpg");
 }
 #fh5co-event .event-band--banquet {
-  background-image: url("../images/Z2.jpg");
   margin-top: 0;
 }
 #fh5co-event .event-band__inner {
@@ -507,6 +509,17 @@ h1, h2, h3, h4, h5, h6, figure {
   padding: clamp(1rem, 3vw, 1.75rem) 15px;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+  background-color: #5a5a5a;
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  background-size: cover;
+  background-position: center center;
+}
+#fh5co-event .event-band--ceremony .event-band__inner {
+  background-image: url("../images/Z1.jpg");
+}
+#fh5co-event .event-band--banquet .event-band__inner {
+  background-image: url("../images/Z2.jpg");
 }
 #fh5co-event .event-band__inner--end {
   -webkit-box-align: end;
@@ -1347,7 +1360,7 @@ form label {
 }
 
 .fh5co-section-gray {
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(155, 45, 48, 1);
 }
 
 .couple-wrap {
