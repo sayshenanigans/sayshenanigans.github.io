@@ -325,7 +325,7 @@ h1, h2, h3, h4, h5, h6, figure {
 }
 
 #fh5co-header.fh5co-cover {
-  background: rgb(128, 39, 39, 1);
+  background: #fff;
 }
 
 #fh5co-header.fh5co-cover .overlay {
@@ -1465,7 +1465,7 @@ form label {
 }
 
 .fh5co-section-gray {
-  background: rgb(128, 39, 39, 1);
+  background: #fff;
 }
 
 .couple-wrap {
