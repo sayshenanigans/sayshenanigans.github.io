@@ -1094,7 +1094,7 @@ figure.love-story__card {
     display: block;
     margin-bottom: 0.5rem;
     font-size: 15px;
-    color: #fff;
+    color: rgb(128, 39, 39, 1);
   }
   #fh5co-love-story .love-story__group--child {
     padding: 12px 10px 14px;
@@ -1132,7 +1132,7 @@ figure.love-story__card {
     height: clamp(150px, 38vw, 220px);
   }
   #fh5co-love-story .love-story__caption {
-    font-size: 0.95rem;
+    font-size: 1.3rem;
     margin-top: 0.45rem;
   }
   #fh5co-love-story .love-story__grid--now {
@@ -2290,6 +2290,33 @@ form label {
 .js .animate-box {
   opacity: 0;
 }
+
+
+.header-style {
+  font-weight: 700 !important;
+  font-style: italic !important;
+  color: rgb(128, 39, 39) !important;
+}
+.wedding-name {
+  font-size: 70px !important;
+}
+
+.name-left {
+  margin-right: 10vw !important;
+}
+.name-right {
+  margin-left: 10vw !important;
+}
+
+@media screen and (max-width: 768px) {
+.name-left {
+    margin-right: 40vw !important;
+  }
+.name-right {
+    margin-left: 40vw !important;
+  }
+}
+
 
 /*# sourceMappingURL=style.css.map */
 
