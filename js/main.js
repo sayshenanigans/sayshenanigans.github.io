@@ -10,7 +10,7 @@
 
 	    	if ( $('body').hasClass('offcanvas') ) {
 
-    			$('body').removeClass('offcanvas');
+    			$('body').removeClass('offcanvas overflow');
     			$('.js-fh5co-nav-toggle').removeClass('active');
 	    	}
 	    }
@@ -55,10 +55,15 @@
 
 			if ( $('body').hasClass('offcanvas') ) {
 
-    			$('body').removeClass('offcanvas');
+    			$('body').removeClass('offcanvas overflow');
     			$('.js-fh5co-nav-toggle').removeClass('active');
 				
 	    	}
+		});
+
+		$('#fh5co-offcanvas').on('click', 'a', function () {
+			$('body').removeClass('offcanvas overflow');
+			$('.js-fh5co-nav-toggle').removeClass('active');
 		});
 	};
 
