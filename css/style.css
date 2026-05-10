@@ -224,6 +224,9 @@ h1, h2, h3, h4, h5, h6, figure {
 .fh5co-nav ul li.active > a {
   color: #fff !important;
 }
+.fh5co-nav .menu-1 ul li > a {
+  color: rgb(128, 39, 39) !important;
+}
 
 #fh5co-counter,
 #fh5co-event,
@@ -1873,7 +1876,7 @@ form label {
   position: absolute;
   z-index: 1901;
   width: 270px;
-  background: black;
+  background: rgb(128, 39, 39);
   font-size: 14px;
   font-weight: bold;
   font-family: Sofia Sans Condensed; 
@@ -1900,10 +1903,10 @@ form label {
   transform: translateX(0px);
 }
 #fh5co-offcanvas a {
-  color: rgba(255, 255, 255, 0.5);
+  color: #fff !important;
 }
 #fh5co-offcanvas a:hover {
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.85) !important;
 }
 #fh5co-offcanvas ul {
   padding: 0;
@@ -2030,11 +2033,11 @@ form label {
   transition: all .2s ease-out;
 }
 .fh5co-nav-toggle.fh5co-nav-white > i {
-  color: #fff;
-  background: #fff;
+  color: rgb(128, 39, 39);
+  background: rgb(128, 39, 39);
 }
 .fh5co-nav-toggle.fh5co-nav-white > i::before, .fh5co-nav-toggle.fh5co-nav-white > i::after {
-  background: #fff;
+  background: rgb(128, 39, 39);
 }
 
 .fh5co-nav-toggle i::before {
