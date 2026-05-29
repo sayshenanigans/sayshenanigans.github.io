@@ -729,28 +729,27 @@ h1, h2, h3, h4, h5, h6, figure {
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   text-align: center;
   gap: 0.35rem;
   max-width: 100%;
   min-width: 0;
-  width: 100%;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 .day-schedule__item--left .day-schedule__content {
   grid-column: 1;
-  justify-self: stretch;
-  -webkit-box-align: end;
-  -ms-flex-align: end;
-  align-items: flex-end;
+  justify-self: end;
   padding-right: clamp(1.75rem, 5vw, 3rem);
 }
 .day-schedule__item--right .day-schedule__content {
   grid-column: 2;
-  justify-self: stretch;
-  -webkit-box-align: start;
-  -ms-flex-align: start;
-  align-items: flex-start;
+  justify-self: start;
   padding-left: clamp(1.75rem, 5vw, 3rem);
 }
 .day-schedule__icon {
@@ -763,11 +762,16 @@ h1, h2, h3, h4, h5, h6, figure {
   width: clamp(44px, 8vw, 58px);
   height: clamp(44px, 8vw, 58px);
 }
+.day-schedule__time,
+.day-schedule__title {
+  width: 100%;
+  text-align: center;
+}
 .day-schedule__time {
   margin: 0;
   max-width: 100%;
   font-family: "Cormorant SC", Georgia, "Times New Roman", Times, serif;
-  font-size: clamp(1.35rem, 3.5vw, 1.75rem);
+  font-size: clamp(1.6rem, 4.2vw, 2.15rem);
   font-weight: 500;
   line-height: 1.2;
   color: var(--schedule-burgundy);
@@ -779,7 +783,7 @@ h1, h2, h3, h4, h5, h6, figure {
   margin: 0;
   max-width: 100%;
   font-family: "Cormorant SC", Georgia, "Times New Roman", Times, serif;
-  font-size: clamp(0.8rem, 2.2vw, 0.95rem);
+  font-size: clamp(1rem, 2.8vw, 1.2rem);
   font-weight: 500;
   line-height: 1.35;
   text-transform: uppercase;
@@ -816,11 +820,11 @@ h1, h2, h3, h4, h5, h6, figure {
     padding-left: clamp(0.5rem, 3vw, 1rem);
   }
   .day-schedule__title {
-    font-size: clamp(0.68rem, 3.1vw, 0.85rem);
+    font-size: clamp(0.85rem, 3.5vw, 1.05rem);
     letter-spacing: 0.06em;
   }
   .day-schedule__time {
-    font-size: clamp(1.05rem, 4.2vw, 1.45rem);
+    font-size: clamp(1.3rem, 4.8vw, 1.85rem);
   }
   .day-schedule__icon svg {
     width: clamp(32px, 9vw, 42px);
@@ -836,7 +840,7 @@ h1, h2, h3, h4, h5, h6, figure {
   }
   .day-schedule__title {
     letter-spacing: 0.03em;
-    font-size: 0.65rem;
+    font-size: 0.78rem;
   }
 }
 
@@ -1261,6 +1265,14 @@ figure.love-story__card {
   object-position: center top;
 }
 
+/* «Мы»: выше кадр, чтобы влезли лица и верхняя часть фигур */
+#fh5co-love-story .love-story__card--us .love-story__frame,
+#fh5co-love-story .love-story__card--us .love-story__img {
+  height: 400px;
+  -o-object-position: center top;
+  object-position: center top;
+}
+
 #fh5co-love-story a.love-story__link--accent {
   -webkit-box-shadow: 0 0 0 1px rgba(201, 162, 55, 0.65), 0 6px 24px rgba(0, 0, 0, 0.1);
   box-shadow: 0 0 0 1px rgba(201, 162, 55, 0.65), 0 6px 24px rgba(0, 0, 0, 0.1);
@@ -1343,6 +1355,10 @@ figure.love-story__card {
   #fh5co-love-story .love-story__frame,
   #fh5co-love-story .love-story__img {
     height: clamp(150px, 38vw, 220px);
+  }
+  #fh5co-love-story .love-story__card--us .love-story__frame,
+  #fh5co-love-story .love-story__card--us .love-story__img {
+    height: clamp(220px, 58vw, 300px);
   }
   #fh5co-love-story .love-story__caption {
     font-size: 1.3rem;
