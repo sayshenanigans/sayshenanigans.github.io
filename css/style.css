@@ -630,6 +630,181 @@ h1, h2, h3, h4, h5, h6, figure {
   }
 }
 
+/* —— Распорядок дня —— */
+.day-schedule {
+  position: relative;
+  overflow: hidden;
+  --schedule-burgundy: rgb(128, 39, 39);
+}
+.day-schedule__deco {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  width: clamp(48px, 10vw, 100px);
+  pointer-events: none;
+  color: var(--schedule-burgundy);
+  z-index: 0;
+}
+.day-schedule__deco--left {
+  left: clamp(4px, 2vw, 24px);
+}
+.day-schedule__deco--right {
+  right: clamp(4px, 2vw, 24px);
+}
+.day-schedule__deco-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: min(72vh, 520px);
+}
+.day-schedule .container {
+  position: relative;
+  z-index: 1;
+}
+.day-schedule__timeline {
+  position: relative;
+  max-width: 640px;
+  margin: 2.5em auto 0;
+  padding: 0.5em 0 0.25em;
+}
+.day-schedule__line {
+  position: absolute;
+  left: 50%;
+  top: 6px;
+  bottom: 6px;
+  width: 1px;
+  background: var(--schedule-burgundy);
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+.day-schedule__line::before,
+.day-schedule__line::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--schedule-burgundy);
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+.day-schedule__line::before {
+  top: -6px;
+}
+.day-schedule__line::after {
+  bottom: -6px;
+}
+.day-schedule__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.day-schedule__item {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-bottom: clamp(2.75rem, 7vw, 4.5rem);
+}
+.day-schedule__item:last-child {
+  margin-bottom: 0;
+}
+.day-schedule__content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+  gap: 0.35rem;
+}
+.day-schedule__item--left .day-schedule__content {
+  grid-column: 1;
+  justify-self: end;
+  padding-right: clamp(1.75rem, 5vw, 3rem);
+}
+.day-schedule__item--right .day-schedule__content {
+  grid-column: 2;
+  justify-self: start;
+  padding-left: clamp(1.75rem, 5vw, 3rem);
+}
+.day-schedule__icon {
+  color: var(--schedule-burgundy);
+  line-height: 0;
+  margin-bottom: 0.15rem;
+}
+.day-schedule__icon svg {
+  display: block;
+  width: clamp(44px, 8vw, 58px);
+  height: clamp(44px, 8vw, 58px);
+}
+.day-schedule__time {
+  margin: 0;
+  font-family: "Cormorant SC", Georgia, "Times New Roman", Times, serif;
+  font-size: clamp(1.35rem, 3.5vw, 1.75rem);
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--schedule-burgundy);
+  letter-spacing: 0.04em;
+}
+.day-schedule__title {
+  margin: 0;
+  font-family: "Cormorant SC", Georgia, "Times New Roman", Times, serif;
+  font-size: clamp(0.8rem, 2.2vw, 0.95rem);
+  font-weight: 500;
+  line-height: 1.35;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--schedule-burgundy);
+}
+#fh5co-schedule .fh5co-heading h2 {
+  margin-bottom: 0;
+}
+@media screen and (max-width: 576px) {
+  .day-schedule__deco {
+    opacity: 0.4;
+    width: 32px;
+  }
+  .day-schedule__deco--left {
+    left: 0;
+  }
+  .day-schedule__deco--right {
+    right: 0;
+  }
+  .day-schedule__timeline {
+    max-width: 100%;
+    margin-top: 2em;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .day-schedule__item--left .day-schedule__content {
+    padding-right: 0.65rem;
+  }
+  .day-schedule__item--right .day-schedule__content {
+    padding-left: 0.65rem;
+  }
+  .day-schedule__title {
+    font-size: clamp(0.65rem, 2.8vw, 0.8rem);
+    letter-spacing: 0.08em;
+  }
+  .day-schedule__icon svg {
+    width: 40px;
+    height: 40px;
+  }
+}
+
 #fh5co-counter {
   height: 600px;
 }
@@ -1439,6 +1614,7 @@ form label {
 #fh5co-services,
 #fh5co-started,
 #fh5co-footer,
+#fh5co-schedule,
 #fh5co-event,
 #fh5co-couple-story,
 #fh5co-couple,
@@ -1458,6 +1634,9 @@ form label {
   #fh5co-love-story,
   #fh5co-gallery,
   .fh5co-section {
+    padding: 3em 0;
+  }
+  #fh5co-schedule {
     padding: 3em 0;
   }
 }
