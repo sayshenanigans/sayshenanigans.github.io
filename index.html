@@ -31,15 +31,13 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Engagement" rel="stylesheet">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia+Sans+Condensed" rel="stylesheet">
 	
-	<!-- clock   -->
-	<link rel="stylesheet" href="css/responsive-clock.css">
+	<link rel="stylesheet" href="css/wedding-countdown.css">
 	<!-- Animate.css -->
 	<link rel="stylesheet" href="css/animate.css">
 	<!-- Icomoon Icon Fonts-->
 	<link rel="stylesheet" href="css/icomoon.css">
 	<!-- Bootstrap  -->
 	<link rel="stylesheet" href="css/bootstrap.css">
-	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/flipclock/0.7.8/flipclock.css'>
 	<!-- Magnific Popup -->
 	<link rel="stylesheet" href="css/magnific-popup.css">
 
@@ -61,7 +59,38 @@
 	<body>
 		
 	<div class="fh5co-loader"></div>
-	
+	<script>
+	(function () {
+		function hideLoader() {
+			var loader = document.querySelector('.fh5co-loader');
+			if (!loader || loader.getAttribute('data-hidden')) {
+				return;
+			}
+			loader.setAttribute('data-hidden', '1');
+			loader.style.transition = 'opacity 0.45s ease';
+			loader.style.opacity = '0';
+			loader.style.pointerEvents = 'none';
+			setTimeout(function () {
+				loader.style.display = 'none';
+			}, 450);
+		}
+		function revealHero() {
+			var nodes = document.querySelectorAll('#fh5co-header .animate-box');
+			for (var i = 0; i < nodes.length; i++) {
+				nodes[i].style.opacity = '1';
+			}
+		}
+		window.addEventListener('load', function () {
+			revealHero();
+			setTimeout(hideLoader, 150);
+		});
+		setTimeout(function () {
+			revealHero();
+			hideLoader();
+		}, 5000);
+	})();
+	</script>
+
 	<div id="page">
 	<nav class="fh5co-nav" role="navigation">
 		<div class="container">
@@ -93,8 +122,29 @@
 							<img src="images/fprint.png" alt="Dmitry + Arina"> 
 							<h1 class="header-style wedding-name name-right">Арина</h1>
 							<h2 class="header-style">29.08.2026</h2>
-							<div class="flipTimebox">
-								<div class="clock clock-fix"></div>
+							<div class="wedding-countdown" id="wedding-countdown" role="timer" aria-label="Обратный отсчёт до свадьбы">
+								<div class="wedding-countdown__grid">
+									<div class="wedding-countdown__item">
+										<span class="wedding-countdown__value" data-unit="days">0</span>
+										<span class="wedding-countdown__label">дней</span>
+									</div>
+									<span class="wedding-countdown__sep" aria-hidden="true">:</span>
+									<div class="wedding-countdown__item">
+										<span class="wedding-countdown__value" data-unit="hours">00</span>
+										<span class="wedding-countdown__label">часов</span>
+									</div>
+									<span class="wedding-countdown__sep" aria-hidden="true">:</span>
+									<div class="wedding-countdown__item">
+										<span class="wedding-countdown__value" data-unit="minutes">00</span>
+										<span class="wedding-countdown__label">минут</span>
+									</div>
+									<span class="wedding-countdown__sep" aria-hidden="true">:</span>
+									<div class="wedding-countdown__item">
+										<span class="wedding-countdown__value" data-unit="seconds">00</span>
+										<span class="wedding-countdown__label">секунд</span>
+									</div>
+								</div>
+								<p class="wedding-countdown__message" hidden>Сегодня наш день!</p>
 							</div>
 							<p>
 								<a href="https://forms.gle/UQoNR7ndgNFkSbkF7"
@@ -418,7 +468,6 @@
 
 	<!-- jQuery -->
 	<script src="js/jquery.min.js"></script>
-    <!-- clock -->
 	<script src="js/clock.js"></script>
 	<!-- jQuery Easing -->
 	<script src="js/jquery.easing.1.3.js"></script>
@@ -430,9 +479,6 @@
 	<script src="js/owl.carousel.min.js"></script>
 	<!-- countTo -->
 	<script src="js/jquery.countTo.js"></script>
-	<script src='https://momentjs.com/downloads/moment.js'></script>
-	<script src='https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.14/moment-timezone-with-data-2012-2022.min.js'></script>
-	<script src='https://cdnjs.cloudflare.com/ajax/libs/flipclock/0.7.8/flipclock.js'></script>
 	<!-- Stellar -->
 	<script src="js/jquery.stellar.min.js"></script>
 	<!-- Magnific Popup -->
@@ -440,7 +486,6 @@
 	<script src="js/magnific-popup-options.js"></script>
 
 	<!-- // <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.js"></script> -->
-	<script src="js/simplyCountdown.js"></script>
 	<!-- Main -->
 	<script src="js/main.js"></script>
 	</body>

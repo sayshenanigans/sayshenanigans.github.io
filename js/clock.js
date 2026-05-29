@@ -1,49 +1,66 @@
-$(document).ready(function() {
-  let clock;
+(function () {
+  'use strict';
 
-  // Grab the current date
-  let currentDate = new Date();
+  var TARGET_MS = new Date('2026-08-29T14:20:00+03:00').getTime();
+  if (isNaN(TARGET_MS)) {
+    TARGET_MS = Date.UTC(2026, 7, 29, 11, 20, 0);
+  }
+  var root = document.getElementById('wedding-countdown');
 
-  // Target future date/24 hour time/Timezone
-  let targetDate = moment.tz("2026-08-29 14:20", "Europe/Moscow");
+  if (!root) {
+    return;
+  }
 
-  // Calculate the difference in seconds between the future and current date
-  let diff = targetDate / 1000 - currentDate.getTime() / 1000;
+  var grid = root.querySelector('.wedding-countdown__grid');
+  var message = root.querySelector('.wedding-countdown__message');
+  var units = {
+    days: root.querySelector('[data-unit="days"]'),
+    hours: root.querySelector('[data-unit="hours"]'),
+    minutes: root.querySelector('[data-unit="minutes"]'),
+    seconds: root.querySelector('[data-unit="seconds"]')
+  };
 
-  if (diff <= 0) {
-    // If remaining countdown is 0
-    clock = $(".clock").FlipClock(0, {
-      clockFace: "DailyCounter",
-      countdown: true,
-      autostart: false
-    });
-    console.log("Date has already passed!")
-    
-  } else {
-    // Run countdown timer
-    clock = $(".clock").FlipClock(diff, {
-      clockFace: "DailyCounter",
-      countdown: true,
-      callbacks: {
-        stop: function() {
-          console.log("Timer has ended!")
-        }
+  function pad2(n) {
+    return n < 10 ? '0' + n : String(n);
+  }
+
+  function render() {
+    var diff = Math.max(0, TARGET_MS - Date.now());
+
+    if (diff === 0) {
+      if (grid) {
+        grid.hidden = true;
       }
-    });
-    
-    // Check when timer reaches 0, then stop at 0
-    setTimeout(function() {
-      checktime();
-    }, 1000);
-    
-    function checktime() {
-      t = clock.getTime();
-      if (t <= 0) {
-        clock.setTime(0);
+      if (message) {
+        message.hidden = false;
       }
-      setTimeout(function() {
-        checktime();
-      }, 1000);
+      return;
+    }
+
+    var totalSeconds = Math.floor(diff / 1000);
+    var days = Math.floor(totalSeconds / 86400);
+    var hours = Math.floor((totalSeconds % 86400) / 3600);
+    var minutes = Math.floor((totalSeconds % 3600) / 60);
+    var seconds = totalSeconds % 60;
+
+    if (units.days) {
+      units.days.textContent = String(days);
+    }
+    if (units.hours) {
+      units.hours.textContent = pad2(hours);
+    }
+    if (units.minutes) {
+      units.minutes.textContent = pad2(minutes);
+    }
+    if (units.seconds) {
+      units.seconds.textContent = pad2(seconds);
+      units.seconds.classList.add('is-tick');
+      window.requestAnimationFrame(function () {
+        units.seconds.classList.remove('is-tick');
+      });
     }
   }
-});
+
+  render();
+  window.setInterval(render, 1000);
+})();

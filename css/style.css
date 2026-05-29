@@ -2576,6 +2576,11 @@ form label {
   opacity: 0;
 }
 
+/* Шапка всегда видна: на телефоне waypoint часто не срабатывает без прокрутки */
+#fh5co-header .animate-box {
+  opacity: 1;
+}
+
 
 .header-style {
   font-weight: 700 !important;

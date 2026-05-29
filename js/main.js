@@ -169,8 +169,34 @@
 	};
 
 
+	var revealVisibleAnimateBoxes = function() {
+		$('.animate-box').each(function() {
+			var $el = $(this);
+			if ($el.hasClass('animated-fast')) {
+				return;
+			}
+			var rect = this.getBoundingClientRect();
+			if (rect.top >= window.innerHeight * 0.92 || rect.bottom <= 0) {
+				return;
+			}
+			var effect = $el.data('animate-effect');
+			if (effect === 'fadeIn') {
+				$el.addClass('fadeIn animated-fast');
+			} else if (effect === 'fadeInLeft') {
+				$el.addClass('fadeInLeft animated-fast');
+			} else if (effect === 'fadeInRight') {
+				$el.addClass('fadeInRight animated-fast');
+			} else {
+				$el.addClass('fadeInUp animated-fast');
+			}
+		});
+	};
+
 	var testimonialCarousel = function(){
 		var owl = $('.owl-carousel-fullwidth');
+		if (!owl.length) {
+			return;
+		}
 		owl.owlCarousel({
 			items: 1,
 			loop: true,
@@ -238,22 +264,40 @@
 
 	// Parallax
 	var parallax = function() {
-		$(window).stellar();
+		if ($.fn.stellar) {
+			$(window).stellar();
+		}
 	};
 
 	
 	$(function(){
-		mobileMenuOutsideClick();
-		parallax();
-		offcanvasMenu();
-		burgerMenu();
-		contentWayPoint();
-		dropdown();
-		testimonialCarousel();
-		goToTop();
-		loaderPage();
-		counter();
-		counterWayPoint();
+		try {
+			mobileMenuOutsideClick();
+			parallax();
+			offcanvasMenu();
+			burgerMenu();
+			contentWayPoint();
+			dropdown();
+			testimonialCarousel();
+			goToTop();
+			counter();
+			counterWayPoint();
+			setTimeout(revealVisibleAnimateBoxes, 200);
+			$(window).on('load', function() {
+				revealVisibleAnimateBoxes();
+				if (typeof Waypoint !== 'undefined' && Waypoint.refreshAll) {
+					Waypoint.refreshAll();
+				}
+				setTimeout(revealVisibleAnimateBoxes, 300);
+			});
+		} catch (err) {
+			if (window.console && console.error) {
+				console.error(err);
+			}
+			$('.animate-box').css('opacity', 1);
+		} finally {
+			loaderPage();
+		}
 	});
 
 
