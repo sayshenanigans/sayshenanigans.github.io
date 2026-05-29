@@ -88,39 +88,62 @@
 
 
 	var contentWayPoint = function() {
-		var i = 0;
-		$('.animate-box').waypoint( function( direction ) {
+		var runAnimateQueue = function() {
+			setTimeout(function() {
+				$('body .animate-box.item-animate').each(function(k) {
+					var el = $(this);
+					setTimeout(function() {
+						var effect = el.data('animate-effect');
+						if (effect === 'fadeIn') {
+							el.addClass('fadeIn animated-fast');
+						} else if (effect === 'fadeInLeft') {
+							el.addClass('fadeInLeft animated-fast');
+						} else if (effect === 'fadeInRight') {
+							el.addClass('fadeInRight animated-fast');
+						} else {
+							el.addClass('fadeInUp animated-fast');
+						}
+						el.removeClass('item-animate');
+					}, k * 200, 'easeInOutExpo');
+				});
+			}, 100);
+		};
 
-			if( direction === 'down' && !$(this.element).hasClass('animated-fast') ) {
-				
-				i++;
-
-				$(this.element).addClass('item-animate');
-				setTimeout(function(){
-
-					$('body .animate-box.item-animate').each(function(k){
-						var el = $(this);
-						setTimeout( function () {
-							var effect = el.data('animate-effect');
-							if ( effect === 'fadeIn') {
-								el.addClass('fadeIn animated-fast');
-							} else if ( effect === 'fadeInLeft') {
-								el.addClass('fadeInLeft animated-fast');
-							} else if ( effect === 'fadeInRight') {
-								el.addClass('fadeInRight animated-fast');
-							} else {
-								el.addClass('fadeInUp animated-fast');
-							}
-
-							el.removeClass('item-animate');
-						},  k * 200, 'easeInOutExpo' );
-					});
-					
-				}, 100);
-				
+		var queueElement = function($el) {
+			if (!$el.hasClass('animated-fast') && !$el.hasClass('item-animate')) {
+				$el.addClass('item-animate');
+				runAnimateQueue();
 			}
+		};
 
-		} , { offset: '85%' } );
+		var queueServicesSection = function() {
+			var $pending = $('#fh5co-services .animate-box').not('.animated-fast').not('.item-animate');
+			if (!$pending.length) {
+				return;
+			}
+			$pending.addClass('item-animate');
+			runAnimateQueue();
+		};
+
+		$('.animate-box').waypoint(function(direction) {
+			if (direction !== 'down' || $(this.element).hasClass('animated-fast')) {
+				return;
+			}
+			var $el = $(this.element);
+			if ($el.closest('#fh5co-services').length) {
+				queueServicesSection();
+			} else {
+				queueElement($el);
+			}
+		}, { offset: '85%' });
+
+		if ($('#fh5co-services').length) {
+			$('#fh5co-services').waypoint(function(direction) {
+				if (direction === 'down') {
+					queueServicesSection();
+				}
+			}, { offset: 'bottom-in-view' });
+		}
 	};
 
 
