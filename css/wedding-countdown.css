@@ -1,0 +1,112 @@
+/* Минималистичный обратный отсчёт до свадьбы */
+.wedding-countdown {
+  margin: clamp(2rem, 5vw, 3.5rem) auto;
+  max-width: 100%;
+  padding: 0 0.5rem;
+}
+
+.wedding-countdown__grid {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+  -ms-flex-align: end;
+  align-items: flex-end;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  gap: clamp(0.35rem, 2vw, 1rem) clamp(0.5rem, 2.5vw, 1.25rem);
+}
+
+.wedding-countdown__item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  min-width: clamp(3.25rem, 14vw, 5.5rem);
+}
+
+.wedding-countdown__value {
+  font-family: "Cormorant SC", Georgia, "Times New Roman", serif;
+  font-size: clamp(2.25rem, 7vw, 3.75rem);
+  font-weight: 500;
+  line-height: 1;
+  color: var(--wedding-burgundy, rgb(128, 39, 39));
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+
+.wedding-countdown__label {
+  margin-top: 0.45rem;
+  font-family: "Cormorant SC", Georgia, "Times New Roman", serif;
+  font-size: clamp(0.65rem, 2vw, 0.8rem);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--wedding-burgundy, rgb(128, 39, 39));
+  opacity: 0.72;
+}
+
+.wedding-countdown__sep {
+  font-family: "Cormorant SC", Georgia, serif;
+  font-size: clamp(1.5rem, 4.5vw, 2.25rem);
+  font-weight: 300;
+  line-height: 1;
+  color: var(--wedding-burgundy, rgb(128, 39, 39));
+  opacity: 0.35;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  padding-bottom: 1.35rem;
+}
+
+.wedding-countdown__message {
+  margin: 0;
+  padding-top: 0.5rem;
+  font-family: "Cormorant SC", Georgia, "Times New Roman", serif;
+  font-size: clamp(1.1rem, 3vw, 1.35rem);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--wedding-burgundy, rgb(128, 39, 39));
+}
+
+.wedding-countdown__value.is-tick {
+  opacity: 0.55;
+  -webkit-transition: opacity 0.15s ease;
+  -o-transition: opacity 0.15s ease;
+  transition: opacity 0.15s ease;
+}
+
+@media screen and (max-width: 480px) {
+  .wedding-countdown__sep {
+    display: none;
+  }
+
+  .wedding-countdown__grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.5rem 0.35rem;
+    width: 100%;
+    max-width: 22rem;
+    margin: 0 auto;
+  }
+
+  .wedding-countdown__item {
+    min-width: 0;
+  }
+
+  .wedding-countdown__value {
+    font-size: clamp(1.65rem, 6.5vw, 2.25rem);
+  }
+}

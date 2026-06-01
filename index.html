@@ -31,15 +31,13 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Engagement" rel="stylesheet">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia+Sans+Condensed" rel="stylesheet">
 	
-	<!-- clock   -->
-	<link rel="stylesheet" href="css/responsive-clock.css">
+	<link rel="stylesheet" href="css/wedding-countdown.css">
 	<!-- Animate.css -->
 	<link rel="stylesheet" href="css/animate.css">
 	<!-- Icomoon Icon Fonts-->
 	<link rel="stylesheet" href="css/icomoon.css">
 	<!-- Bootstrap  -->
 	<link rel="stylesheet" href="css/bootstrap.css">
-	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/flipclock/0.7.8/flipclock.css'>
 	<!-- Magnific Popup -->
 	<link rel="stylesheet" href="css/magnific-popup.css">
 
@@ -61,7 +59,38 @@
 	<body>
 		
 	<div class="fh5co-loader"></div>
-	
+	<script>
+	(function () {
+		function hideLoader() {
+			var loader = document.querySelector('.fh5co-loader');
+			if (!loader || loader.getAttribute('data-hidden')) {
+				return;
+			}
+			loader.setAttribute('data-hidden', '1');
+			loader.style.transition = 'opacity 0.45s ease';
+			loader.style.opacity = '0';
+			loader.style.pointerEvents = 'none';
+			setTimeout(function () {
+				loader.style.display = 'none';
+			}, 450);
+		}
+		function revealHero() {
+			var nodes = document.querySelectorAll('#fh5co-header .animate-box');
+			for (var i = 0; i < nodes.length; i++) {
+				nodes[i].style.opacity = '1';
+			}
+		}
+		window.addEventListener('load', function () {
+			revealHero();
+			setTimeout(hideLoader, 150);
+		});
+		setTimeout(function () {
+			revealHero();
+			hideLoader();
+		}, 5000);
+	})();
+	</script>
+
 	<div id="page">
 	<nav class="fh5co-nav" role="navigation">
 		<div class="container">
@@ -69,11 +98,11 @@
 	
 				<div class="col-xs-12 text-center menu-1">
 					<ul>
-						<li class="active"><a href="index.html" style="color: rgb(128, 39, 39, 1) !important;">Главная</a></li>
-						<li class="active"><a href="#fh5co-event" style="color: rgb(128, 39, 39, 1) !important;">События</a></li>
-						<li class="active"><a href="#fh5co-love-story" style="color: rgb(128, 39, 39, 1) !important;">Наша история</a></li>
-						<li class="active"><a href="#fh5co-services" style="color: rgb(128, 39, 39, 1) !important;">Детали</a></li>
-						<!-- <li class="active"><a href="#fh5co-services">Лучшие моменты</a></li> -->
+						<li class="active"><a href="index.html">Главная</a></li>
+						<li class="active"><a href="#fh5co-schedule">Распорядок дня</a></li>
+						<li class="active"><a href="#fh5co-event">Место проведения</a></li>
+						<li class="active"><a href="#fh5co-love-story">Наша история</a></li>
+						<li class="active"><a href="#fh5co-services">Детали</a></li>
 					</ul>
 				</div>
 			</div>
@@ -88,20 +117,41 @@
 				<div class="col-md-8 col-md-offset-2 text-center">
 					<div class="display-t">
 						<div class="display-tc animate-box" data-animate-effect="fadeIn">
-							<h1 style="font-weight: 700; font-size: 70px; font-style: italic; margin-right: 200px; color: rgb(128, 39, 39, 1);">Дмитрий</h1>
+							<h1 class="header-style wedding-name name-left">Дмитрий</h1>
 							<br>
 							<img src="images/fprint.png" alt="Dmitry + Arina"> 
-							<h1 style="font-weight: 700; font-size: 70px; font-style: italic; margin-left: 200px; color:rgb(128, 39, 39, 1)">Арина</h1>
-							<h2 style="font-weight: 700; color: rgb(128, 39, 39, 1)">29.08.2026</h2>
-							<div class="flipTimebox">
-								<div class="clock clock-fix"></div>
+							<h1 class="header-style wedding-name name-right">Арина</h1>
+							<h2 class="header-style">29.08.2026</h2>
+							<div class="wedding-countdown" id="wedding-countdown" role="timer" aria-label="Обратный отсчёт до свадьбы">
+								<div class="wedding-countdown__grid">
+									<div class="wedding-countdown__item">
+										<span class="wedding-countdown__value" data-unit="days">0</span>
+										<span class="wedding-countdown__label">дней</span>
+									</div>
+									<span class="wedding-countdown__sep" aria-hidden="true">:</span>
+									<div class="wedding-countdown__item">
+										<span class="wedding-countdown__value" data-unit="hours">00</span>
+										<span class="wedding-countdown__label">часов</span>
+									</div>
+									<span class="wedding-countdown__sep" aria-hidden="true">:</span>
+									<div class="wedding-countdown__item">
+										<span class="wedding-countdown__value" data-unit="minutes">00</span>
+										<span class="wedding-countdown__label">минут</span>
+									</div>
+									<span class="wedding-countdown__sep" aria-hidden="true">:</span>
+									<div class="wedding-countdown__item">
+										<span class="wedding-countdown__value" data-unit="seconds">00</span>
+										<span class="wedding-countdown__label">секунд</span>
+									</div>
+								</div>
+								<p class="wedding-countdown__message" hidden>Сегодня наш день!</p>
 							</div>
 							<p>
-								<a href="https://forms.gle/UQoNR7ndgNFkSbkF7" 
-								   target="_blank" 
+								<a href="https://forms.gle/UQoNR7ndgNFkSbkF7"
+								   target="_blank"
 								   class="btn btn-default btn-sm btn-rsvp"
 								   style="background: rgb(128, 39, 39, 1) !important; color: #fff !important; border: none;">
-									Отметиться о присутствии
+								   Отметиться о присутствии
 								</a>
 							</p>
 						</div>
@@ -111,13 +161,129 @@
 		</div>
 	</header>
 
-
-
-	<div id="fh5co-event" class="fh5co-section-events fh5co-section-gray">
+	<section id="fh5co-schedule" class="fh5co-section-gray site-section day-schedule" aria-labelledby="schedule-title">
+		<div class="day-schedule__deco day-schedule__deco--left" aria-hidden="true">
+			<svg class="day-schedule__deco-svg" viewBox="0 0 80 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path d="M40 8c-6 10-18 14-18 26 0 10 8 18 18 18s18-8 18-18c0-12-12-16-18-26z" fill="currentColor" opacity="0.5"/>
+				<path d="M12 72c4-8 14-10 14-18 0-6-5-10-10-10-5 0-10 4-10 10 0 8 10 10 6 18z" fill="currentColor" opacity="0.35"/>
+				<path d="M68 120c-5 9-16 12-16 24 0 11 9 20 20 20s20-9 20-20c0-12-11-15-16-24-8 6-12 6-8 0z" fill="currentColor" opacity="0.45"/>
+				<g stroke="currentColor" stroke-width="1" opacity="0.55">
+					<path d="M8 168c8-4 16-2 20 6 4-8 12-10 20-6"/>
+					<path d="M8 168c0 14 10 26 22 30"/>
+					<ellipse cx="30" cy="198" rx="10" ry="6"/>
+					<path d="M30 204v28"/>
+					<path d="M22 218h16"/>
+				</g>
+				<path d="M48 248c-4 7-13 9-13 17 0 7 6 13 13 13s13-6 13-13c0-8-9-10-13-17z" fill="currentColor" opacity="0.4"/>
+				<g stroke="currentColor" stroke-width="1" opacity="0.5">
+					<path d="M56 280c6-3 12-1 14 5 2-6 8-8 14-5"/>
+					<path d="M56 280c0 10 7 18 16 20"/>
+					<ellipse cx="72" cy="300" rx="7" ry="4"/>
+				</g>
+			</svg>
+		</div>
+		<div class="day-schedule__deco day-schedule__deco--right" aria-hidden="true">
+			<svg class="day-schedule__deco-svg" viewBox="0 0 80 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<g stroke="currentColor" stroke-width="1" opacity="0.5">
+					<path d="M24 12c-6-3-12-1-14 5-2-6-8-8-14-5"/>
+					<path d="M24 12c0 10-7 18-16 20"/>
+					<ellipse cx="8" cy="32" rx="7" ry="4"/>
+				</g>
+				<path d="M32 56c4 7 13 9 13 17 0 7-6 13-13 13s-13-6-13-13c0-8 9-10 13-17z" fill="currentColor" opacity="0.45"/>
+				<path d="M52 104c6 10 18 14 18 26 0 10-8 18-18 18s-18-8-18-18c0-12 12-16 18-26z" fill="currentColor" opacity="0.5"/>
+				<g stroke="currentColor" stroke-width="1" opacity="0.55">
+					<path d="M72 168c-8-4-16-2-20 6-4-8-12-10-20-6"/>
+					<path d="M72 168c0 14-10 26-22 30"/>
+					<ellipse cx="50" cy="198" rx="10" ry="6"/>
+					<path d="M50 204v28"/>
+					<path d="M42 218h16"/>
+				</g>
+				<path d="M20 248c-6 10-18 14-18 26 0 10 8 18 18 18s18-8 18-18c0-12-12-16-18-26z" fill="currentColor" opacity="0.35"/>
+				<path d="M60 288c5 9 16 12 16 24 0 11-9 20-20 20s-20-9-20-20c0-12 11-15 16-24 8 6 12 6 8 0z" fill="currentColor" opacity="0.4"/>
+			</svg>
+		</div>
 		<div class="container">
 			<div class="row">
-				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading animate-box">
-					<h2 style="color: rgb(128, 39, 39, 1) !important; font-size: 70px;">События</h2>
+				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading fh5co-heading--main animate-box">
+					<h2 id="schedule-title" class="section-title">Распорядок дня</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-10 col-md-offset-1">
+					<div class="day-schedule__timeline animate-box" data-animate-effect="fadeIn">
+						<div class="day-schedule__line" aria-hidden="true"></div>
+						<ol class="day-schedule__list">
+							<li class="day-schedule__item day-schedule__item--left">
+								<div class="day-schedule__content">
+									<div class="day-schedule__icon" aria-hidden="true">
+										<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<circle cx="24" cy="36" r="10" stroke="currentColor" stroke-width="1.2"/>
+											<circle cx="40" cy="36" r="10" stroke="currentColor" stroke-width="1.2"/>
+											<path d="M34 36h-4" stroke="currentColor" stroke-width="1.2"/>
+											<path d="M40 30l3-6 3 6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+											<path d="M43 30v2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+										</svg>
+									</div>
+									<p class="day-schedule__time">12:20</p>
+									<h3 class="day-schedule__title">Роспись</h3>
+								</div>
+							</li>
+							<li class="day-schedule__item day-schedule__item--right">
+								<div class="day-schedule__content">
+									<div class="day-schedule__icon" aria-hidden="true">
+										<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M18 44V28l6-10 6 10v16" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+											<path d="M34 44V28l6-10 6 10v16" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+											<path d="M14 20c4-6 10-8 16-4M50 20c-4-6-10-8-16-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+											<path d="M22 18l10 8 10-8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+										</svg>
+									</div>
+									<p class="day-schedule__time">16:00</p>
+									<h3 class="day-schedule__title">Фуршет</h3>
+								</div>
+							</li>
+							<li class="day-schedule__item day-schedule__item--left">
+								<div class="day-schedule__content">
+									<div class="day-schedule__icon" aria-hidden="true">
+										<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<ellipse cx="32" cy="38" rx="14" ry="10" stroke="currentColor" stroke-width="1.2"/>
+											<path d="M14 30v20M50 30v20" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+											<path d="M18 26l-4-8M46 26l4-8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+											<path d="M26 38h12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+										</svg>
+									</div>
+									<p class="day-schedule__time">17:00</p>
+									<h3 class="day-schedule__title">Банкет</h3>
+								</div>
+							</li>
+							<li class="day-schedule__item day-schedule__item--right">
+								<div class="day-schedule__content">
+									<div class="day-schedule__icon" aria-hidden="true">
+										<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M20 44h24" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+											<path d="M22 44V36c0-6 4-10 10-10s10 4 10 10v8" stroke="currentColor" stroke-width="1.2"/>
+											<path d="M26 36c0-4 3-7 6-7s6 3 6 7" stroke="currentColor" stroke-width="1.2"/>
+											<path d="M24 32c0-5 3.5-9 8-9s8 4 8 9" stroke="currentColor" stroke-width="1.2"/>
+											<path d="M32 18v-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+											<path d="M32 14c-2 0-3 1.5-3 3s1 3 3 3 3-1.5 3-3-1-3-3-3z" stroke="currentColor" stroke-width="1.2"/>
+										</svg>
+									</div>
+									<p class="day-schedule__time">22:00</p>
+									<h3 class="day-schedule__title">Торт</h3>
+								</div>
+							</li>
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<div id="fh5co-event" class="fh5co-section-events fh5co-section-gray site-section">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading fh5co-heading--main animate-box">
+					<h2 class="section-title">Место проведения</h2>
 				</div>
 			</div>
 		</div>
@@ -125,14 +291,14 @@
 			<div class="event-band__inner">
 				<article class="event-wrap event-timeline__card event-timeline__card--ceremony animate-box" data-animate-effect="fadeInUp">
 					<div class="event-timeline__card-surface">
-						<h3 style="text-align: center;">Бракосочетание</h3>
+						<h3>Бракосочетание</h3>
 						<div class="event-col">
 							<i class="icon-calendar"></i>
 							<span style="text-align: center;">29 Августа 2026</span>
 						</div>
 						<div class="event-col">
 							<i class="icon-clock"></i>
-							<span>14:20</span>
+							<span>12:20</span>
 						</div>
 						<p style="text-align: center;"><b>Московская обл., г. Раменское,<br>ул. Красноармейская, д. 2.</b></p>
 						<iframe class="event-timeline__map" title="Карта: ЗАГС" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2675.861939749513!2d38.228744600000006!3d55.570142499999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x414abff70d7a053d%3A0xc16642987359a62!2z0KPQv9GA0LDQstC70LXQvdC40LUg0JfQkNCT0KE!5e1!3m2!1sru!2sru!4v1771608956015!5m2!1sru!2sru" width="400" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -144,7 +310,7 @@
 			<div class="event-band__inner event-band__inner--end">
 				<article class="event-wrap event-timeline__card event-timeline__card--banquet animate-box" data-animate-effect="fadeInUp">
 					<div class="event-timeline__card-surface">
-						<h3 style="text-align: center;">Банкет</h3>
+						<h3>Банкет</h3>
 						<div class="event-col">
 							<i class="icon-calendar"></i>
 							<span style="text-align: center;">29 Августа 2026</span>
@@ -162,11 +328,11 @@
 	</div>
 
 
-	<section id="fh5co-love-story" class="fh5co-section-gray love-story" aria-labelledby="love-story-title">
+	<section id="fh5co-love-story" class="fh5co-section-gray site-section love-story" aria-labelledby="love-story-title">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading animate-box">
-					<h2 id="love-story-title" style="color: rgb(128, 39, 39, 1) !important; font-size: 70px;">Наша история</h2>
+				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading fh5co-heading--main animate-box">
+					<h2 id="love-story-title" class="section-title">Наша история</h2>
 				</div>
 			</div>
 			<div class="row row-bottom-padded-md">
@@ -181,7 +347,7 @@
 										<img class="love-story__img" src="images/F1.jpg" width="400" height="300" alt="Дмитрий в детстве" loading="lazy" />
 									</span>
 								</a>
-								<figcaption class="love-story__caption" style="color: rgb(128, 39, 39, 1);">Димочка</figcaption>
+								<figcaption class="love-story__caption">Димочка</figcaption>
 							</figure>
 
 							<figure class="love-story__card love-story__card--us love-story__card--featured animate-box" data-animate-effect="fadeIn">
@@ -190,7 +356,7 @@
 										<img class="love-story__img" src="images/F2.jpg" width="400" height="300" alt="Первое совместное детское фото" loading="lazy" />
 									</span>
 								</a>
-								<figcaption class="love-story__caption" style="color: rgb(128, 39, 39, 1);">Мы</figcaption>
+								<figcaption class="love-story__caption">Мы</figcaption>
 							</figure>
 
 							<figure class="love-story__card love-story__card--her animate-box" data-animate-effect="fadeIn">
@@ -199,7 +365,7 @@
 										<img class="love-story__img" src="images/F3.jpg" width="400" height="300" alt="Арина в детстве" loading="lazy" />
 									</span>
 								</a>
-								<figcaption class="love-story__caption" style="color: rgb(128, 39, 39, 1);">Ариша</figcaption>
+								<figcaption class="love-story__caption">Ариша</figcaption>
 							</figure>
 							</div>
 						</div>
@@ -250,102 +416,58 @@
 		</div>
 	</section>
 
-	<div id="fh5co-services" class="fh5co-section-gray">
+	<section id="fh5co-services" class="fh5co-section-gray site-section">
 		<div class="container">
-			
 			<div class="row animate-box">
-				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-					<h2 style="color:rgb(128, 39, 39, 1);" !important; font-size: 70px;">Детали</h2>
+				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading fh5co-heading--main">
+					<h2 class="section-title">Детали</h2>
 				</div>
 			</div>
 
-
 			<div class="row animate-box text-center">
-				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-
-				<h2 style="color: rgb(128, 39, 39, 1); margin-bottom: 20px; font-family: 'Cormorant SC', serif; font-weight: 500;">
-					Дресс-код
-					</h2>
-
-				<h3 style="color: rgb(128, 39, 39, 1); font-weight: 300; line-height: 1.6; font-size: 18px; font-family: 'Cormorant SC'; padding-left: 15px; padding-right: 15px;">
-					Определенного дресс-кода на нашей свадьбе нет, но мы просим Вас прийти нарядными и с хорошим настроением. Для мужчин приветствуются рубашки и штаны. Прекрасных дам просим воздержаться от белого цвета.
-				</h3>
+				<div class="col-md-8 col-md-offset-2 fh5co-heading fh5co-heading--sub">
+					<h3 class="section-subtitle">Дресс-код</h3>
+					<p class="section-text">
+						Определенного дресс-кода на нашей свадьбе нет, но мы просим Вас прийти нарядными и с хорошим настроением. Для мужчин приветствуются рубашки и штаны. Прекрасных дам просим воздержаться от белого цвета.
+					</p>
+				</div>
 			</div>
 
 			<div class="row animate-box text-center">
-				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-
-				<h2 style="color: rgb(128, 39, 39, 1); margin-bottom: 20px; font-family: 'Cormorant SC', serif; font-weight: 500; padding-left: 20px; padding-right: 20px;">
-					Трансфер
-					</h2>
-
-				<h3 style="color: rgb(128, 39, 39, 1); font-weight: 300; line-height: 1.6; font-size: 18px; font-family: 'Cormorant SC'; padding-left: 15px; padding-right: 15px;">
-					Для удобства мы организовали трансфер от ЗАГСа до места проведения банкета. Пожалуйста, отметьтесь о трансфере, если он необходим, в форме выше.
-				</h3>
+				<div class="col-md-8 col-md-offset-2 fh5co-heading fh5co-heading--sub">
+					<h3 class="section-subtitle">Трансфер</h3>
+					<p class="section-text">
+						Для удобства мы организовали трансфер от ЗАГСа до места проведения банкета. Пожалуйста, отметьтесь о трансфере, если он необходим, в форме выше.
+					</p>
+				</div>
 			</div>
 
 			<div class="row animate-box text-center">
-				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-
-				<h2 style="color: rgb(128, 39, 39, 1); margin-bottom: 20px; font-family: 'Cormorant SC', serif; font-weight: 500; padding-left: 20px; padding-right: 20px;">
-					Подарки
-					</h2>
-
-				<h3 style="color: rgb(128, 39, 39, 1); font-weight: 300; line-height: 1.6; font-size: 18px; font-family: 'Cormorant SC'; padding-left: 15px; padding-right: 15px;">
-					Если Вы хотите творчески подойти к выбору подарка, то это приветствуется, но мы будем очень благодарны за любой подарок, в том числе и классический денежный.
-				</h3>
-			</div>
-
-			<div class="row animate-box text-center">
-				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-
-				<h2 style="color: rgb(128, 39, 39, 1); margin-bottom: 20px; font-family: 'Cormorant SC', serif; font-weight: 500; padding-left: 20px; padding-right: 20px;">
-					Завершение дня
-					</h2>
-
-				<h3 style="color: rgb(128, 39, 39, 1); font-weight: 300; line-height: 1.6; font-size: 18px; font-family: 'Cormorant SC'; padding-left: 20px; padding-right: 20px;">
-					Мероприятие завершится в 00:00, но территория площадки будет открыта до 04:00. Поэтому, если Вы хотите продолжить веселье, то можете остаться и продолжить празднование.
-				</h3>
+				<div class="col-md-8 col-md-offset-2 fh5co-heading fh5co-heading--sub">
+					<h3 class="section-subtitle">Подарки</h3>
+					<p class="section-text">
+						Если Вы хотите творчески подойти к выбору подарка, то это приветствуется, но мы будем очень благодарны за любой подарок, в том числе и классический денежный.
+					</p>
+				</div>
 			</div>
 
 		</div>
-	</div>
+	</section>
 
-	<footer class="fh5co-section-gray site-close" role="contentinfo">
+
+	<footer class="fh5co-section-gray site-section site-close" role="contentinfo">
 		<div class="container">
-			<p class="site-close__text" style="color: rgb(128, 39, 39, 1)"">С нетерпением ждём встречи с Вами на нашей свадьбе!</p>
+			<p class="site-close__text">С нетерпением ждём встречи с Вами на нашей свадьбе!</p>
 		</div>
 	</footer>
 
-	<!-- <div id="fh5co-services" class="fh5co-section-gray">
-		<div class="container">
-			
-			<div class="row animate-box">
-				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-					<h2>Лучшие моменты</h2>
 
-				</div>
-			</div>
-
-
-
-				<div class="container animate-box">
-					<div class="fh5co-video fh5co-bg" style="background-image: url(images/img_bg_3.jpg); ">
-						<a href="#" class="popup-vimeo"><i class="icon-video2"></i></a>
-						<div class="overlay"></div>
-					</div>
-				</div>
-			</div>
-			
-		</div>
-	</div> -->
 	<div class="gototop js-top">
 		<a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
 	</div>
 
 	<!-- jQuery -->
 	<script src="js/jquery.min.js"></script>
-    <!-- clock -->
 	<script src="js/clock.js"></script>
 	<!-- jQuery Easing -->
 	<script src="js/jquery.easing.1.3.js"></script>
@@ -357,9 +479,6 @@
 	<script src="js/owl.carousel.min.js"></script>
 	<!-- countTo -->
 	<script src="js/jquery.countTo.js"></script>
-	<script src='https://momentjs.com/downloads/moment.js'></script>
-	<script src='https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.14/moment-timezone-with-data-2012-2022.min.js'></script>
-	<script src='https://cdnjs.cloudflare.com/ajax/libs/flipclock/0.7.8/flipclock.js'></script>
 	<!-- Stellar -->
 	<script src="js/jquery.stellar.min.js"></script>
 	<!-- Magnific Popup -->
@@ -367,7 +486,6 @@
 	<script src="js/magnific-popup-options.js"></script>
 
 	<!-- // <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.js"></script> -->
-	<script src="js/simplyCountdown.js"></script>
 	<!-- Main -->
 	<script src="js/main.js"></script>
 	</body>

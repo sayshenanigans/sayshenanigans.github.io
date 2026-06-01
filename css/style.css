@@ -7,6 +7,11 @@
 }
 @font-face { font-family: Marianna; src: url('../fonts/Marianna.ttf');}
 @font-face { font-family: "Cormorant SC"; src: url("../fonts/CormorantSC-Medium.ttf");}
+
+:root {
+  --wedding-burgundy: rgb(128, 39, 39);
+}
+
 /* =======================================================
 *
 * 	Template Style 
@@ -224,6 +229,9 @@ h1, h2, h3, h4, h5, h6, figure {
 .fh5co-nav ul li.active > a {
   color: #fff !important;
 }
+.fh5co-nav .menu-1 ul li > a {
+  color: rgb(128, 39, 39) !important;
+}
 
 #fh5co-counter,
 #fh5co-event,
@@ -385,8 +393,7 @@ h1, h2, h3, h4, h5, h6, figure {
   display: table;
   width: 100%;
 }
-#fh5co-counter .fh5co-heading h2,
-#fh5co-event .fh5co-heading h2 {
+#fh5co-counter .fh5co-heading h2 {
   color: #646464;
 }
 #fh5co-counter .fh5co-heading span,
@@ -624,6 +631,216 @@ h1, h2, h3, h4, h5, h6, figure {
     margin-right: auto;
     margin-top: 0;
     margin-bottom: 0;
+  }
+}
+
+/* —— Распорядок дня —— */
+.day-schedule {
+  position: relative;
+  overflow: hidden;
+  --schedule-burgundy: var(--wedding-burgundy);
+}
+.day-schedule__deco {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  width: clamp(48px, 10vw, 100px);
+  pointer-events: none;
+  color: var(--schedule-burgundy);
+  z-index: 0;
+}
+.day-schedule__deco--left {
+  left: clamp(4px, 2vw, 24px);
+}
+.day-schedule__deco--right {
+  right: clamp(4px, 2vw, 24px);
+}
+.day-schedule__deco-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: min(72vh, 520px);
+}
+.day-schedule .container {
+  position: relative;
+  z-index: 1;
+}
+.day-schedule__timeline {
+  position: relative;
+  max-width: 640px;
+  margin: 2.5em auto 0;
+  padding: 0.5em 0 0.25em;
+}
+.day-schedule__line {
+  position: absolute;
+  left: 50%;
+  top: 6px;
+  bottom: 6px;
+  width: 1px;
+  background: var(--schedule-burgundy);
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+.day-schedule__line::before,
+.day-schedule__line::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--schedule-burgundy);
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+.day-schedule__line::before {
+  top: -6px;
+}
+.day-schedule__line::after {
+  bottom: -6px;
+}
+.day-schedule__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.day-schedule__item {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-bottom: clamp(2.75rem, 7vw, 4.5rem);
+  min-width: 0;
+}
+.day-schedule__item:last-child {
+  margin-bottom: 0;
+}
+.day-schedule__content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+  gap: 0.35rem;
+  max-width: 100%;
+  min-width: 0;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.day-schedule__item--left .day-schedule__content {
+  grid-column: 1;
+  justify-self: end;
+  padding-right: clamp(1.75rem, 5vw, 3rem);
+}
+.day-schedule__item--right .day-schedule__content {
+  grid-column: 2;
+  justify-self: start;
+  padding-left: clamp(1.75rem, 5vw, 3rem);
+}
+.day-schedule__icon {
+  color: var(--schedule-burgundy);
+  line-height: 0;
+  margin-bottom: 0.15rem;
+}
+.day-schedule__icon svg {
+  display: block;
+  width: clamp(44px, 8vw, 58px);
+  height: clamp(44px, 8vw, 58px);
+}
+.day-schedule__time,
+.day-schedule__title {
+  width: 100%;
+  text-align: center;
+}
+.day-schedule__time {
+  margin: 0;
+  max-width: 100%;
+  font-family: "Cormorant SC", Georgia, "Times New Roman", Times, serif;
+  font-size: clamp(1.6rem, 4.2vw, 2.15rem);
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--schedule-burgundy);
+  letter-spacing: 0.04em;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+.day-schedule__title {
+  margin: 0;
+  max-width: 100%;
+  font-family: "Cormorant SC", Georgia, "Times New Roman", Times, serif;
+  font-size: clamp(1rem, 2.8vw, 1.2rem);
+  font-weight: 500;
+  line-height: 1.35;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--schedule-burgundy);
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+}
+@media screen and (max-width: 768px) {
+  .site-section .container {
+    padding-left: max(12px, env(safe-area-inset-left, 0px));
+    padding-right: max(12px, env(safe-area-inset-right, 0px));
+  }
+  .site-section .row > [class*="col-"] {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+  .day-schedule__deco {
+    display: none;
+  }
+  .day-schedule__timeline {
+    max-width: 100%;
+    margin-top: 2em;
+    padding-left: 4px;
+    padding-right: 4px;
+  }
+  .day-schedule__item--left .day-schedule__content {
+    padding-right: clamp(0.5rem, 3vw, 1rem);
+  }
+  .day-schedule__item--right .day-schedule__content {
+    padding-left: clamp(0.5rem, 3vw, 1rem);
+  }
+  .day-schedule__title {
+    font-size: clamp(0.85rem, 3.5vw, 1.05rem);
+    letter-spacing: 0.06em;
+  }
+  .day-schedule__time {
+    font-size: clamp(1.3rem, 4.8vw, 1.85rem);
+  }
+  .day-schedule__icon svg {
+    width: clamp(32px, 9vw, 42px);
+    height: clamp(32px, 9vw, 42px);
+  }
+}
+@media screen and (max-width: 380px) {
+  .day-schedule__item--left .day-schedule__content {
+    padding-right: 0.35rem;
+  }
+  .day-schedule__item--right .day-schedule__content {
+    padding-left: 0.35rem;
+  }
+  .day-schedule__title {
+    letter-spacing: 0.03em;
+    font-size: 0.78rem;
   }
 }
 
@@ -1048,6 +1265,14 @@ figure.love-story__card {
   object-position: center top;
 }
 
+/* «Мы»: выше кадр, чтобы влезли лица и верхняя часть фигур */
+#fh5co-love-story .love-story__card--us .love-story__frame,
+#fh5co-love-story .love-story__card--us .love-story__img {
+  height: 400px;
+  -o-object-position: center top;
+  object-position: center top;
+}
+
 #fh5co-love-story a.love-story__link--accent {
   -webkit-box-shadow: 0 0 0 1px rgba(201, 162, 55, 0.65), 0 6px 24px rgba(0, 0, 0, 0.1);
   box-shadow: 0 0 0 1px rgba(201, 162, 55, 0.65), 0 6px 24px rgba(0, 0, 0, 0.1);
@@ -1059,7 +1284,7 @@ figure.love-story__card {
   margin: 0.75rem 0 0;
   font-family: "Cormorant SC", Georgia, "Times New Roman", Times, serif;
   font-size: 20px;
-  color: #fff;
+  color: var(--wedding-burgundy);
   letter-spacing: 0.12em;
 }
 
@@ -1094,7 +1319,7 @@ figure.love-story__card {
     display: block;
     margin-bottom: 0.5rem;
     font-size: 15px;
-    color: #fff;
+    color: rgb(128, 39, 39, 1);
   }
   #fh5co-love-story .love-story__group--child {
     padding: 12px 10px 14px;
@@ -1131,8 +1356,12 @@ figure.love-story__card {
   #fh5co-love-story .love-story__img {
     height: clamp(150px, 38vw, 220px);
   }
+  #fh5co-love-story .love-story__card--us .love-story__frame,
+  #fh5co-love-story .love-story__card--us .love-story__img {
+    height: clamp(220px, 58vw, 300px);
+  }
   #fh5co-love-story .love-story__caption {
-    font-size: 0.95rem;
+    font-size: 1.3rem;
     margin-top: 0.45rem;
   }
   #fh5co-love-story .love-story__grid--now {
@@ -1423,7 +1652,7 @@ form label {
 }
 .site-close__text {
   margin: 0 auto;
-  color: rgba(255, 255, 255, 0.95);
+  color: var(--wedding-burgundy);
   font-family: "Cormorant SC", Georgia, "Times New Roman", serif;
   font-weight: 500;
   font-size: clamp(1rem, 3.75vw, 1.375rem);
@@ -1436,6 +1665,7 @@ form label {
 #fh5co-services,
 #fh5co-started,
 #fh5co-footer,
+#fh5co-schedule,
 #fh5co-event,
 #fh5co-couple-story,
 #fh5co-couple,
@@ -1450,6 +1680,8 @@ form label {
   #fh5co-services,
   #fh5co-started,
   #fh5co-footer,
+  #fh5co-schedule,
+  #fh5co-event,
   #fh5co-couple-story,
   #fh5co-couple,
   #fh5co-love-story,
@@ -1459,15 +1691,63 @@ form label {
   }
 }
 
-/* Под «Детали» идёт финальная строка — убираем нижний padding секции (7em / 3em), иначе огромный зазор */
+/* Меньше нижний отступ перед футером, но не ноль — иначе последний блок обрезается на десктопе */
 #fh5co-services {
-  padding-bottom: 0;
+  padding-bottom: clamp(2rem, 4vw, 3.5rem);
 }
 
 .fh5co-section-gray {
   background: #fff;
 }
 
+/* —— Единый стиль секций —— */
+.section-title {
+  color: var(--wedding-burgundy) !important;
+  font-family: "Marianna", Georgia, "Times New Roman", serif;
+  font-size: clamp(2.75rem, 8vw, 4.375rem);
+  font-weight: bold;
+  line-height: 1.1;
+  margin-bottom: 0;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+.section-subtitle {
+  color: var(--wedding-burgundy);
+  font-family: "Cormorant SC", Georgia, "Times New Roman", serif;
+  font-size: clamp(1.35rem, 4vw, 1.75rem);
+  font-weight: 500;
+  line-height: 1.25;
+  margin: 0 0 1.25rem;
+}
+.section-text {
+  color: var(--wedding-burgundy);
+  font-family: "Cormorant SC", Georgia, "Times New Roman", serif;
+  font-size: clamp(1rem, 2.5vw, 1.125rem);
+  font-weight: 300;
+  line-height: 1.6;
+  margin: 0 auto;
+  padding: 0 15px;
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+#fh5co-services > .container > .row:last-child .fh5co-heading--sub {
+  margin-bottom: 0;
+}
+.fh5co-heading .section-text {
+  color: var(--wedding-burgundy);
+}
+#fh5co-event .event-wrap h3 {
+  color: var(--wedding-burgundy);
+  border-bottom-color: rgba(128, 39, 39, 0.35);
+  font-family: "Cormorant SC", Georgia, "Times New Roman", serif;
+  text-align: center;
+}
+#fh5co-event .event-wrap p,
+#fh5co-event .event-wrap span {
+  color: var(--wedding-burgundy);
+  font-family: "Cormorant SC", Georgia, "Times New Roman", serif;
+}
 .couple-wrap {
   width: 90%;
   margin: 0 auto;
@@ -1635,6 +1915,27 @@ form label {
 @media screen and (max-width: 768px) {
   .fh5co-heading h2 {
     font-size: 40px;
+  }
+}
+.fh5co-heading.fh5co-heading--main {
+  margin-bottom: clamp(2rem, 5vw, 3.5rem);
+}
+.fh5co-heading.fh5co-heading--sub {
+  margin-bottom: clamp(1.75rem, 4vw, 2.75rem);
+}
+.fh5co-heading h2.section-title {
+  color: var(--wedding-burgundy) !important;
+  font-family: "Marianna", Georgia, "Times New Roman", serif;
+  font-size: clamp(2.75rem, 8vw, 4.375rem);
+  font-weight: bold;
+  line-height: 1.1;
+  margin-bottom: 0;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+@media screen and (max-width: 768px) {
+  .fh5co-heading h2.section-title {
+    font-size: clamp(2.75rem, 14vw, 4.5rem);
   }
 }
 .fh5co-heading p {
@@ -1873,7 +2174,7 @@ form label {
   position: absolute;
   z-index: 1901;
   width: 270px;
-  background: black;
+  background: rgb(128, 39, 39);
   font-size: 14px;
   font-weight: bold;
   font-family: Sofia Sans Condensed; 
@@ -1900,10 +2201,10 @@ form label {
   transform: translateX(0px);
 }
 #fh5co-offcanvas a {
-  color: rgba(255, 255, 255, 0.5);
+  color: #fff !important;
 }
 #fh5co-offcanvas a:hover {
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.85) !important;
 }
 #fh5co-offcanvas ul {
   padding: 0;
@@ -2030,11 +2331,11 @@ form label {
   transition: all .2s ease-out;
 }
 .fh5co-nav-toggle.fh5co-nav-white > i {
-  color: #fff;
-  background: #fff;
+  color: rgb(128, 39, 39);
+  background: rgb(128, 39, 39);
 }
 .fh5co-nav-toggle.fh5co-nav-white > i::before, .fh5co-nav-toggle.fh5co-nav-white > i::after {
-  background: #fff;
+  background: rgb(128, 39, 39);
 }
 
 .fh5co-nav-toggle i::before {
@@ -2290,6 +2591,38 @@ form label {
 .js .animate-box {
   opacity: 0;
 }
+
+/* Шапка всегда видна: на телефоне waypoint часто не срабатывает без прокрутки */
+#fh5co-header .animate-box {
+  opacity: 1;
+}
+
+
+.header-style {
+  font-weight: 700 !important;
+  font-style: italic !important;
+  color: rgb(128, 39, 39) !important;
+}
+.wedding-name {
+  font-size: 70px !important;
+}
+
+.name-left {
+  margin-right: 10vw !important;
+}
+.name-right {
+  margin-left: 10vw !important;
+}
+
+@media screen and (max-width: 768px) {
+.name-left {
+    margin-right: 40vw !important;
+  }
+.name-right {
+    margin-left: 40vw !important;
+  }
+}
+
 
 /*# sourceMappingURL=style.css.map */
 
