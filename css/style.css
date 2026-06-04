@@ -2629,6 +2629,155 @@ form label {
   }
 }
 
+/* =======================================================
+* Настройки экрана приветствия (Свадебный Preloader)
+* ======================================================= */
 
+.fh5co-loader.welcome-screen {
+    background: #fff !important; /* Убираем фоновую гифку шаблона */
+    display: flex !important;    /* Фиксируем flex-выравнивание */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    /* Запускаем анимацию, которая жестко держит экран 1.5 секунды, а затем гасит */
+    animation: forceShowAndFade 2.0s ease-in-out forwards !important;
+    pointer-events: none;
+}
+
+/* --- Новая ключевая анимация --- */
+@keyframes forceShowAndFade {
+    0% { 
+        opacity: 1; 
+        visibility: visible; 
+    }
+    75% { /* 75% от 2 секунд = ровно 1.5 секунды экран железно виден */
+        opacity: 1; 
+        visibility: visible; 
+    }
+    100% { 
+        opacity: 0; 
+        visibility: hidden; 
+    }
+}
+
+/* Все остальные стили (.doves-container, .dove, .wing, .invitation-text) остаются без изменений */
+.doves-container {
+    display: flex;
+    gap: 60px;
+    margin-bottom: 30px;
+    perspective: 1000px; /* Добавляет глубину для анимации */
+}
+.dove {
+    width: 100px;
+    height: 100px;
+    animation: floatUpDown 2.4s ease-in-out infinite alternate;
+}
+.dove .body {
+    fill: var(--wedding-burgundy);
+}
+.dove .dove-eye {
+    fill: #fff; /* Белый аккуратный глазик */
+}
+.dove .wing-front {
+    fill: var(--wedding-burgundy);
+    transform-origin: 42px 42px;
+    animation: flapWingFront 0.6s ease-in-out infinite alternate;
+}
+.dove .wing-back {
+    fill: var(--wedding-burgundy);
+    opacity: 0.8; /* Легкое затенение дальнего крыла для объема */
+    transform-origin: 35px 45px;
+    animation: flapWingBack 0.6s ease-in-out infinite alternate;
+    animation-delay: 0.1s; /* Легкое смещение во времени для реалистичности */
+}
+.dove.right {
+    transform: scaleX(-1);
+    animation: floatUpDownRight 2.4s ease-in-out infinite alternate;
+    animation-delay: 0.4s;
+}
+.dove.right .wing-front,
+.dove.right .wing-back {
+    /* Синхронизируем задержку крыльев у второго голубя */
+    animation-delay: 0.2s; 
+}
+.wing {
+    transform-origin: 35px 25px;
+    animation: flapWing 0.4s ease-in-out infinite alternate;
+}
+.invitation-text {
+    color: var(--wedding-burgundy);
+    font-family: "Cormorant SC", Georgia, serif;
+    font-size: 2rem;
+    font-weight: 500;
+    text-align: center;
+    padding: 0 20px;
+    opacity: 0;
+    animation: fadeInTextWelcome 0.5s ease-out forwards;
+    animation-delay: 0.2s;
+}
+
+@keyframes fadeInTextWelcome { to { opacity: 1; } }
+@keyframes flapWing { 0% { transform: scaleY(1); } 100% { transform: scaleY(0.3) skewX(-10deg); } }
+@keyframes floatLeftDove { 0% { transform: translateY(0); } 100% { transform: translateY(-15px); } }
+@keyframes floatRightDove { 0% { transform: scaleX(-1) translateY(0); } 100% { transform: scaleX(-1) translateY(-15px); } }
+@keyframes flapWingFront {
+    0% { transform: rotate(0deg) scaleY(1); }
+    100% { transform: rotate(-15deg) scaleY(0.4) skewX(-5deg); }
+}
+
+/* Взмах дальнего крыла */
+@keyframes flapWingBack {
+    0% { transform: rotate(0deg) scaleY(1); }
+    100% { transform: rotate(10deg) scaleY(0.5); }
+}
+
+/* Плавное парение левого голубя */
+@keyframes floatUpDown {
+    0% { transform: translateY(0) rotate(0deg); }
+    100% { transform: translateY(-12px) rotate(3deg); }
+}
+
+/* Плавное парение правого (зеркального) голубя */
+@keyframes floatUpDownRight {
+    0% { transform: scaleX(-1) translateY(0) rotate(0deg); }
+    100% { transform: scaleX(-1) translateY(-12px) rotate(3deg); }
+}
+
+/* =======================================================
+* Идентичная пульсирующая кнопка RSVP внизу сайта
+* ======================================================= */
+
+.pulse-button-wedding {
+  font-family: "Cormorant SC", Georgia, serif !important; /* Тот же утонченный свадебный шрифт */
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 500;
+  box-shadow: 0 0 0 0 rgba(128, 39, 39, 0.7);
+  animation: weddingBtnPulse 2s infinite;
+  transition: all 0.3s ease;
+  border: none !important;
+}
+
+.pulse-button-wedding:hover {
+  background-color: rgb(148, 49, 49) !important; /* Чуть светлее при наведении */
+  transform: scale(1.03);
+}
+
+/* Эффект пульсации вокруг кнопки */
+@keyframes weddingBtnPulse {
+  0% {
+    transform: scale(0.98);
+    box-shadow: 0 0 0 0 rgba(128, 39, 39, 0.5);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 15px rgba(128, 39, 39, 0);
+  }
+  100% {
+    transform: scale(0.98);
+    box-shadow: 0 0 0 0 rgba(128, 39, 39, 0);
+  }
+}
 /*# sourceMappingURL=style.css.map */
 
