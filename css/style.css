@@ -1714,8 +1714,8 @@ form label {
 .section-subtitle {
   color: var(--wedding-burgundy);
   font-family: "Cormorant SC", Georgia, "Times New Roman", serif;
-  font-size: clamp(1.35rem, 4vw, 1.75rem);
-  font-weight: 500;
+  font-size: clamp(2rem, 4vw, 2.5rem);
+  font-weight: bold;
   line-height: 1.25;
   margin: 0 0 1.25rem;
 }
@@ -2745,37 +2745,49 @@ form label {
 }
 
 /* =======================================================
-* Идентичная пульсирующая кнопка RSVP внизу сайта
+* Идеальное воссоздание пульсирующей кнопки внизу
 * ======================================================= */
 
-.pulse-button-wedding {
-  font-family: "Cormorant SC", Georgia, serif !important; /* Тот же утонченный свадебный шрифт */
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  font-weight: 500;
-  box-shadow: 0 0 0 0 rgba(128, 39, 39, 0.7);
-  animation: weddingBtnPulse 2s infinite;
-  transition: all 0.3s ease;
+.wedding-final-rsvp {
+  font-family: "Sofia Sans Condensed", "Work Sans", Arial, sans-serif !important;
+  text-transform: uppercase !important;   /* Заглавные буквы */
+  letter-spacing: 1px !important;         /* Разрядка букв */
+  font-size: 18px !important;              /* Мелкий аккуратный шрифт оригинала */
+  font-weight: 400 !important;
+  
+  /* Цвета и размеры из оригинальной темы */
+  background: rgb(128, 39, 39) !important;
+  color: #fff !important;
   border: none !important;
+  padding: 14px 32px !important;
+  display: inline-block !important;
+  border-radius: 28px !important;
+  text-decoration: none !important;
+  
+  /* Тень и анимация пульсации */
+  box-shadow: 0 0 0 0 rgba(128, 39, 39, 0.6);
+  animation: finalRsvpPulse 2.2s cubic-bezier(0.66, 0, 0, 1) infinite;
+  transition: all 0.3s ease-in-out;
 }
 
-.pulse-button-wedding:hover {
-  background-color: rgb(148, 49, 49) !important; /* Чуть светлее при наведении */
-  transform: scale(1.03);
+.wedding-final-rsvp:hover {
+  background: rgb(148, 59, 59) !important;
+  transform: translateY(-2px);
+  color: #fff !important;
 }
 
-/* Эффект пульсации вокруг кнопки */
-@keyframes weddingBtnPulse {
+/* Эффект расширяющейся пульсирующей волны */
+@keyframes finalRsvpPulse {
   0% {
-    transform: scale(0.98);
-    box-shadow: 0 0 0 0 rgba(128, 39, 39, 0.5);
+    transform: scale(0.97);
+    box-shadow: 0 0 0 0 rgba(128, 39, 39, 0.6);
   }
-  70% {
+  50% {
     transform: scale(1);
-    box-shadow: 0 0 0 15px rgba(128, 39, 39, 0);
+    box-shadow: 0 0 0 16px rgba(128, 39, 39, 0);
   }
   100% {
-    transform: scale(0.98);
+    transform: scale(0.97);
     box-shadow: 0 0 0 0 rgba(128, 39, 39, 0);
   }
 }
