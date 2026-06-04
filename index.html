@@ -60,7 +60,6 @@
 		
 	<div class="fh5co-loader welcome-screen">
 		<div class="doves-container">
-			<!-- Левый изящный голубь -->
 			<svg class="dove left" viewBox="0 0 100 100">
 				<path class="wing-back" d="M35,45 C25,25 30,10 45,5 C50,15 45,35 35,45 Z" />
 				<path class="body" d="M20,55 C12,50 8,40 12,32 C16,24 26,30 35,38 C42,28 55,20 68,22 C72,23 76,26 80,24 C78,28 75,32 78,36 C72,44 60,52 48,54 C35,56 25,60 20,55 Z" />
@@ -68,7 +67,6 @@
 				<circle cx="72" cy="28" r="1.5" class="dove-eye"/>
 			</svg>
 
-			<!-- Правый изящный голубь -->
 			<svg class="dove right" viewBox="0 0 100 100">
 				<path class="wing-back" d="M35,45 C25,25 30,10 45,5 C50,15 45,35 35,45 Z" />
 				<path class="body" d="M20,55 C12,50 8,40 12,32 C16,24 26,30 35,38 C42,28 55,20 68,22 C72,23 76,26 80,24 C78,28 75,32 78,36 C72,44 60,52 48,54 C35,56 25,60 20,55 Z" />
@@ -78,39 +76,38 @@
 		</div>
 		
 		<div class="invitation-text">
-			Вы приглашены на свадьбу 29.08.2026
+			Скоро в нашей жизни произойдет очень важное событие — свадьба, и мы хотим разделить с Вами этот счастливый день!
 		</div>
+
+		<button type="button" class="disclaimer-btn" id="enter-site-btn">Узнать больше</button>
 	</div>
 	
 	<script>
 	(function () {
-		function hideLoader() {
-			var loader = document.querySelector('.fh5co-loader');
-			if (!loader || loader.getAttribute('data-hidden')) {
-				return;
-			}
-			loader.setAttribute('data-hidden', '1');
-			loader.style.transition = 'opacity 0.45s ease';
-			loader.style.opacity = '0';
-			loader.style.pointerEvents = 'none';
-			setTimeout(function () {
-				loader.style.display = 'none';
-			}, 450);
-		}
+		var loader = document.querySelector('.welcome-screen');
+		var enterBtn = document.getElementById('enter-site-btn');
+
 		function revealHero() {
 			var nodes = document.querySelectorAll('#fh5co-header .animate-box');
 			for (var i = 0; i < nodes.length; i++) {
 				nodes[i].style.opacity = '1';
 			}
 		}
-		window.addEventListener('load', function () {
-			revealHero();
-			setTimeout(hideLoader, 150);
-		});
-		setTimeout(function () {
-			revealHero();
-			hideLoader();
-		}, 5000);
+
+		if (enterBtn && loader) {
+			enterBtn.addEventListener('click', function () {
+				// Включаем анимацию исчезновения, прописанную в CSS
+				loader.classList.add('fade-out-screen');
+				
+				// Запускаем анимацию появления элементов главного экрана
+				revealHero();
+
+				// Полностью удаляем дисклеймер из разметки после завершения анимации (0.5 сек)
+				setTimeout(function () {
+					loader.style.display = 'none';
+				}, 500);
+			});
+		}
 	})();
 	</script>
 
@@ -208,12 +205,28 @@
 							<li class="day-schedule__item day-schedule__item--right">
 								<div class="day-schedule__content">
 									<div class="day-schedule__icon" aria-hidden="true">
-										<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-											<path d="M18 44V28l6-10 6 10v16" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-											<path d="M34 44V28l6-10 6 10v16" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-											<path d="M14 20c4-6 10-8 16-4M50 20c-4-6-10-8-16-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
-											<path d="M22 18l10 8 10-8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-										</svg>
+									<svg viewBox="0 0 100 100" xmlns="http://w3.org">
+									<g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+										<!-- Чаша бокала -->
+										<path d="M 35,15 L 35,45 C 35,60 42,65 50,65 C 58,65 65,60 65,45 L 65,15 Z" />
+										
+										<!-- Ножка бокала -->
+										<path d="M 50,65 L 50,85" />
+										
+										<!-- Подставка (основание) -->
+										<path d="M 35,85 C 42,85 45,85 50,85 C 55,85 58,85 65,85" />
+										
+										<!-- Линия уровня шампанского (внутри чаши) -->
+										<path d="M 35,30 L 65,30" stroke-width="1.5" opacity="0.7" />
+										
+										<!-- Пузырьки шампанского -->
+										<circle cx="45" cy="40" r="1" fill="currentColor" stroke="none" />
+										<circle cx="55" cy="36" r="1" fill="currentColor" stroke="none" />
+										<circle cx="40" cy="48" r="1" fill="currentColor" stroke="none" />
+										<circle cx="50" cy="52" r="1" fill="currentColor" stroke="none" />
+										<circle cx="58" cy="46" r="1" fill="currentColor" stroke="none" />
+									</g>
+									</svg>
 									</div>
 									<p class="day-schedule__time">16:00</p>
 									<h3 class="day-schedule__title">Фуршет</h3>
@@ -222,12 +235,23 @@
 							<li class="day-schedule__item day-schedule__item--left">
 								<div class="day-schedule__content">
 									<div class="day-schedule__icon" aria-hidden="true">
-										<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-											<ellipse cx="32" cy="38" rx="14" ry="10" stroke="currentColor" stroke-width="1.2"/>
-											<path d="M14 30v20M50 30v20" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
-											<path d="M18 26l-4-8M46 26l4-8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
-											<path d="M26 38h12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
-										</svg>
+									<svg viewBox="0 0 100 100" xmlns="http://w3.org">
+									<g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+										<!-- Нож (смещен левее) -->
+										<path d="M 10,50 C 10,32 11,20 14,15 C 15,22 16,35 16,50 L 16,55 L 10,55 Z" />
+										<path d="M 11,55 C 11,65 10,78 10,82 C 10,87 16,87 16,82 C 16,78 15,65 15,55" />
+										
+										<!-- Тарелка (осталась по центру) -->
+										<circle cx="50" cy="50" r="30" />
+										<circle cx="50" cy="50" r="22" stroke-width="1.5" opacity="0.7" />
+										
+										<!-- Вилка (смещена правее) -->
+										<path d="M 82,15 L 82,35 C 82,47 85,50 87,55 L 87,55 C 89,50 92,47 92,35 L 92,15" />
+										<path d="M 85.3,15 L 85.3,33" />
+										<path d="M 88.6,15 L 88.6,33" />
+										<path d="M 87,55 C 87,65 86,78 86,82 C 86,87 88,87 88,82 C 88,78 87,65 87,55" />			
+									</g>
+									</svg>
 									</div>
 									<p class="day-schedule__time">17:00</p>
 									<h3 class="day-schedule__title">Банкет</h3>
@@ -236,15 +260,96 @@
 							<li class="day-schedule__item day-schedule__item--right">
 								<div class="day-schedule__content">
 									<div class="day-schedule__icon" aria-hidden="true">
-									<svg viewBox="0 0 64 64" fill="none" xmlns="http://w3.org">
-										<path d="M20 44h24" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
-										<path d="M22 44V36c0-6 4-10 10-10s10 4 10 10v8" stroke="currentColor" stroke-width="1.2"/>
-										<path d="M26 36c0-4 3-7 6-7s6 3 6 7" stroke="currentColor" stroke-width="1.2"/>
-										<path d="M24 32c0-5 3.5-9 8-9s8 4 8 9" stroke="currentColor" stroke-width="1.2"/>
+									<svg viewBox="0 0 100 100" xmlns="http://w3.org">
+									<g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+										<!-- Подставка для торта (блюдо) -->
+										<path d="M 20,82 C 30,85 40,86 50,86 C 60,86 70,85 80,82" />
+										<path d="M 40,85 L 42,90 L 58,90 L 60,85" />
+
+										<!-- Нижний ярус торта -->
+										<path d="M 25,82 L 25,60 C 25,58 27,56 30,56 L 70,56 C 73,56 75,58 75,60 L 75,82 Z" />
+										
+										<!-- Верхний ярус торта -->
+										<path d="M 32,56 L 32,38 C 32,36 34,34 37,34 L 63,34 C 66,34 68,36 68,38 L 68,56" />
+
+										<!-- Крем / Глазурь (волнистые линии на ярусах) -->
+										<path d="M 32,44 C 35,47 38,41 41,44 C 44,47 47,41 50,44 C 53,47 56,41 59,44 C 62,47 65,41 68,44" stroke-width="1.5" opacity="0.8" />
+										<path d="M 25,68 C 29,72 33,65 37,68 C 41,72 45,65 49,68 C 53,72 57,65 61,68 C 65,72 69,65 75,68" stroke-width="1.5" opacity="0.8" />
+
+										<!-- Свечи (три штуки сверху) -->
+										<!-- Левая свеча -->
+										<line x1="42" y1="34" x2="42" y2="24" />
+										<path d="M 42,21 C 43,18 42,16 42,16 C 42,16 41,18 42,21 Z" fill="currentColor" stroke-width="1" />
+										
+										<!-- Центральная свеча -->
+										<line x1="50" y1="34" x2="50" y2="22" />
+										<path d="M 50,19 C 51,16 50,14 50,14 C 50,14 49,16 50,19 Z" fill="currentColor" stroke-width="1" />
+										
+										<!-- Правая свеча -->
+										<line x1="58" y1="34" x2="58" y2="24" />
+										<path d="M 58,21 C 59,18 58,16 58,16 C 58,16 57,18 58,21 Z" fill="currentColor" stroke-width="1" />
+									</g>
 									</svg>
 									</div>
-									<p class="day-schedule__time">22:00</p>
+									<p class="day-schedule__time">21:30</p>
 									<h3 class="day-schedule__title">Торт</h3>
+								</div>
+							</li>
+							<li class="day-schedule__item day-schedule__item--left">
+								<div class="day-schedule__content">
+									<div class="day-schedule__icon" aria-hidden="true">
+									<svg viewBox="0 0 100 100" xmlns="http://w3.org">
+									<g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+										<!-- Центральная (самая крупная) вспышка -->
+										<!-- Вертикальные и горизонтальные лучи -->
+										<line x1="50" y1="25" x2="50" y2="15" />
+										<line x1="50" y1="45" x2="50" y2="55" />
+										<line x1="35" y1="35" x2="25" y2="35" />
+										<line x1="65" y1="35" x2="75" y2="35" />
+										
+										<!-- Диагональные лучи -->
+										<line x1="39" y1="24" x2="32" y2="17" />
+										<line x1="61" y1="24" x2="68" y2="17" />
+										<line x1="39" y1="46" x2="32" y2="53" />
+										<line x1="61" y1="46" x2="68" y2="53" />
+										
+										<!-- Искорки вокруг центрального взрыва (точки) -->
+										<circle cx="50" cy="8" r="1.5" fill="currentColor" stroke="none" />
+										<circle cx="50" cy="62" r="1.5" fill="currentColor" stroke="none" />
+										<circle cx="18" cy="35" r="1.5" fill="currentColor" stroke="none" />
+										<circle cx="82" cy="35" r="1.5" fill="currentColor" stroke="none" />
+
+										<!-- Малый боковой салют (слева снизу) -->
+										<g opacity="0.7" stroke-width="1.5">
+											<line x1="22" y1="65" x2="22" y2="59" />
+											<line x1="22" y1="77" x2="22" y2="83" />
+											<line x1="16" y1="71" x2="10" y2="71" />
+											<line x1="28" y1="71" x2="34" y2="71" />
+											<line x1="18" y1="67" x2="13" y2="62" />
+											<line x1="26" y1="67" x2="31" y2="62" />
+											<line x1="18" y1="75" x2="13" y2="80" />
+											<line x1="26" y1="75" x2="31" y2="80" />
+										</g>
+
+										<!-- Малый боковой салют (справа сверху) -->
+										<g opacity="0.7" stroke-width="1.5">
+											<line x1="78" y1="55" x2="78" y2="50" />
+											<line x1="78" y1="67" x2="78" y2="72" />
+											<line x1="72" y1="61" x2="67" y2="61" />
+											<line x1="84" y1="61" x2="89" y2="61" />
+											<circle cx="78" cy="45" r="1" fill="currentColor" stroke="none" />
+											<circle cx="78" cy="77" r="1" fill="currentColor" stroke="none" />
+											<circle cx="62" cy="61" r="1" fill="currentColor" stroke="none" />
+											<circle cx="94" cy="61" r="1" fill="currentColor" stroke="none" />
+										</g>
+										
+										<!-- Искрящийся хвост / след от взлетающего салюта -->
+										<path d="M 50,90 C 48,80 52,72 50,60" stroke-dasharray="2 4" stroke-width="1.5" opacity="0.6" />
+									</g>
+									</svg>
+									</div>
+									<p class="day-schedule__time">23:00</p>
+									<h3 class="day-schedule__title">Завершение</h3>
 								</div>
 							</li>
 						</ol>

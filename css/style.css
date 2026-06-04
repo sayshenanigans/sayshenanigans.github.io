@@ -2639,26 +2639,49 @@ form label {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 25px;                   /* Отступ между текстом и кнопкой */
     
-    /* Запускаем анимацию, которая жестко держит экран 1.5 секунды, а затем гасит */
-    animation: forceShowAndFade 2.0s ease-in-out forwards !important;
-    pointer-events: none;
+    /* Окно теперь стоит статично и ждет клика, pointer-events: auto */
+    pointer-events: auto !important; 
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+    z-index: 99999;
 }
 
-/* --- Новая ключевая анимация --- */
-@keyframes forceShowAndFade {
-    0% { 
-        opacity: 1; 
-        visibility: visible; 
-    }
-    75% { /* 75% от 2 секунд = ровно 1.5 секунды экран железно виден */
-        opacity: 1; 
-        visibility: visible; 
-    }
-    100% { 
-        opacity: 0; 
-        visibility: hidden; 
-    }
+.fh5co-loader.welcome-screen.fade-out-screen {
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+
+/* Красивая кнопка дисклеймера в стиле вашей пульсирующей RSVP-кнопки */
+.disclaimer-btn {
+  font-family: "Sofia Sans Condensed", "Work Sans", Arial, sans-serif !important;
+  text-transform: uppercase !important;   /* Заглавные буквы */
+  letter-spacing: 1px !important;         /* Разрядка букв */
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  
+  background: rgb(128, 39, 39) !important; /* Бордовый цвет темы */
+  color: #fff !important;
+  border: none !important;
+  padding: 12px 30px !important;
+  display: inline-block !important;
+  border-radius: 25px !important;
+  text-decoration: none !important;
+  cursor: pointer;
+  
+  box-shadow: 0 4px 15px rgba(128, 39, 39, 0.3);
+  transition: all 0.3s ease-in-out;
+}
+
+.disclaimer-btn:hover {
+  background: rgb(148, 59, 59) !important; /* Чуть светлее при наведении */
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(128, 39, 39, 0.4);
+}
+
+.disclaimer-btn:active {
+  transform: translateY(0);
 }
 
 /* Все остальные стили (.doves-container, .dove, .wing, .invitation-text) остаются без изменений */
