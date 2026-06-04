@@ -2607,6 +2607,12 @@ form label {
   font-size: 70px !important;
 }
 
+.wedding-date {
+  font-size: 30px !important;
+  font-weight: lighter !important;
+  font-style: normal !important;
+}
+
 .name-left {
   margin-right: 10vw !important;
 }
