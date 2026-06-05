@@ -113,7 +113,7 @@
 		}
 	})();
 	</script>
-	
+
 	<script>
 	(function () {
 		var loader = document.querySelector('.welcome-screen');
@@ -165,7 +165,25 @@
 						<div class="display-tc animate-box" data-animate-effect="fadeIn">
 							<h1 class="header-style wedding-name name-left">Дмитрий</h1>
 							<br>
-							<img src="images/fprint.png" alt="Dmitry + Arina"> 
+							<!-- <img src="images/fprint.png" alt="Dmitry + Arina">  -->
+							<div class="love-story__connector" aria-hidden="true">
+								<svg class="love-story__connector-svg" viewBox="0 0 400 70" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+									<style>
+										.header__heart {
+											animation: pulse 1.2s ease-in-out infinite;
+											transform-origin: center;
+											transform-box: fill-box;
+										}
+										@keyframes pulse {
+											/* Четкий центр при масштабе 3 */
+											0%, 100% { transform: translate(190px, 25px) scale(3); }
+											/* Пульсация относительно центра */
+											50% { transform: translate(190px, 25px) scale(3.45); }
+										}
+									</style>
+									<path class="header__heart" style="color: rgb(128, 39, 39)" fill="currentColor" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" transform="translate(190 25) scale(3.0)" />
+								</svg>
+							</div>
 							<h1 class="header-style wedding-name name-right">Арина</h1>
 							<h2 class="header-style wedding-date">29.08.2026</h2>
 							<h1 class="header-style wedding-date" style="font-size: clamp(2.75rem, 8vw, 4.375rem) !important;">Мы станем мужем и женой через:</h2>
@@ -478,20 +496,20 @@
 
 						<div class="love-story__connector" aria-hidden="true">
 							<svg class="love-story__connector-svg" viewBox="0 0 400 72" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
-								<style>
-									.love-story__heart {
-										animation: pulse 1.2s ease-in-out infinite;
-										transform-origin: center;
-										transform-box: fill-box;
-									}
-									@keyframes pulse {
-										0%, 100% { transform: translate(188px, 48px) scale(1); }
-										50% { transform: translate(188px, 48px) scale(1.15); }
-									}
-								</style>
-								<path class="love-story__connector-line" d="M28 8v16c0 7 5.5 12.5 12.5 12.5H170" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" />
+								<path class="love-story__connector-line" d="M28 8v16c0 7 5.5 12.5 12.5 12.5H230" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" />
 								<path class="love-story__connector-line" d="M372 8v16c0 7-5.5 12.5-12.5 12.5H230" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" />
 								<path class="love-story__connector-line" d="M200 36.5V56" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" />
+								    <style>
+                                        .love-story__heart {
+                                            animation: pulse_love-story 1.2s ease-in-out infinite;
+                                            transform-origin: center;
+                                            transform-box: fill-box;
+                                        }
+                                        @keyframes pulse_love-story {
+                                            0%, 100% { transform: translate(188px, 48px) scale(1); }
+                                            50% { transform: translate(188px, 48px) scale(1.15); }
+                                        }
+                                    </style>
 								<path class="love-story__heart" fill="currentColor" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" transform="translate(188 48) scale(1.0)" />
 							</svg>
 						</div>
