@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  var TARGET_MS = new Date('2026-08-29T14:20:00+03:00').getTime();
+  var TARGET_MS = new Date('2026-08-29T12:20:00+03:00').getTime();
   if (isNaN(TARGET_MS)) {
     TARGET_MS = Date.UTC(2026, 7, 29, 11, 20, 0);
   }

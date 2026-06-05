@@ -59,6 +59,9 @@
 	<body>
 		
 	<div class="fh5co-loader welcome-screen">
+		<div class="invitation-text" style="font-size: clamp(2.75rem, 8vw, 4.375rem);">
+			Приглашение
+		</div>
 		<div class="doves-container">
 			<svg class="dove left" viewBox="0 0 100 100">
 				<path class="wing-back" d="M35,45 C25,25 30,10 45,5 C50,15 45,35 35,45 Z" />
@@ -110,6 +113,29 @@
 		}
 	})();
 	</script>
+	
+	<script>
+	(function () {
+		var loader = document.querySelector('.welcome-screen');
+		var enterBtn = document.getElementById('enter-site-btn');
+		var body = document.body;
+
+		// Блокируем прокрутку сразу при инициализации страницы
+		if (loader && !loader.classList.contains('fade-out-screen')) {
+			body.classList.add('lock-scroll');
+		}
+
+		if (enterBtn) {
+			enterBtn.addEventListener('click', function() {
+				// Анимация скрытия приветственного экрана
+				loader.classList.add('fade-out-screen');
+				
+				// Разблокируем прокрутку основного сайта
+				body.classList.remove('lock-scroll');
+			});
+		}
+	})();
+	</script>
 
 	<div id="page">
 	<nav class="fh5co-nav" role="navigation">
@@ -142,7 +168,7 @@
 							<img src="images/fprint.png" alt="Dmitry + Arina"> 
 							<h1 class="header-style wedding-name name-right">Арина</h1>
 							<h2 class="header-style wedding-date">29.08.2026</h2>
-							<h1 class="header-style wedding-date" style="font-size: clamp(2.75rem, 8vw, 4.375rem) !important;">Мероприятие начнётся через:</h2>
+							<h1 class="header-style wedding-date" style="font-size: clamp(2.75rem, 8vw, 4.375rem) !important;">Мы станем мужем и женой через:</h2>
 							<div class="wedding-countdown" id="wedding-countdown" role="timer" aria-label="Обратный отсчёт до свадьбы">
 								<div class="wedding-countdown__grid">
 									<div class="wedding-countdown__item">
@@ -508,7 +534,7 @@
 				<div class="col-md-8 col-md-offset-2 fh5co-heading fh5co-heading--sub">
 					<h3 class="section-subtitle">Дресс-код</h3>
 					<p class="section-text">
-						Определенного дресс-кода на нашей свадьбе нет, но мы просим Вас прийти нарядными и с хорошим настроением. Для мужчин будем рады видеть рубашки и брюки. Прекрасных дам просим воздержаться от белого цвета.
+						Определенного дресс-кода на нашей свадьбе нет, но мы просим Вас прийти нарядными и с хорошим настроением. Мужчин будем рады видеть в рубашках и брюках. Прекрасных дам просим воздержаться от белого цвета.
 					</p>
 				</div>
 			</div>
@@ -517,7 +543,7 @@
 				<div class="col-md-8 col-md-offset-2 fh5co-heading fh5co-heading--sub">
 					<h3 class="section-subtitle">Трансфер</h3>
 					<p class="section-text">
-						Для Вашего удобства мы организовали трансфер от ресторана по маршруту Электросталь - Есино - Храпуново. Пожалуйста, отметьтесь о трансфере, если он необходим, в форме ниже.
+						Для Вашего удобства мы организовали трансфер от ресторана по маршруту Электросталь - Есино - Храпуново. Пожалуйста, отметьтесь, если Вам необходим трансфер в форме ниже.
 					</p>
 				</div>
 			</div>
@@ -541,7 +567,7 @@
 						<a href="https://forms.gle/UQoNR7ndgNFkSbkF7"
 						   target="_blank"
 						   class="wedding-final-rsvp">
-						   Отметиться о присутствии
+						   Подтвердить присутствие
 						</a>
 					</p>
 				</div>
